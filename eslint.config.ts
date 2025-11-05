@@ -8,32 +8,31 @@ import { defineConfig } from "eslint/config";
 import pluginImport from "eslint-plugin-import";
 
 export default defineConfig(
-  js.configs.recommended,
-  tseslint.configs.recommended,
+    js.configs.recommended,
+    tseslint.configs.recommended,
+    {
+        files: ["**/*.{ts,tsx}"],
+        plugins: {
+            js,
+            react: pluginReact,
+        },
 
-  {
-    files: ["**/*.{ts,tsx}"],
-    plugins: {
-      js,
-      react: pluginReact,
+        extends: [
+            "js/recommended",
+            pluginImport.flatConfigs.recommended,
+            pluginImport.flatConfigs.typescript,
+            pluginReact.configs.flat.recommended,
+        ],
+
+        ignores: ["dist", "node_modules"],
+        languageOptions: {
+            globals: globals.browser,
+            ecmaVersion: "latest",
+            sourceType: "module",
+            parserOptions: {
+                project: ["./tsconfig.json"],
+                ecmaFeatures: { jsx: true },
+            },
+        },
     },
-
-    extends: [
-      "js/recommended",
-      pluginImport.flatConfigs.recommended,
-      pluginImport.flatConfigs.typescript,
-      pluginReact.configs.flat.recommended,
-    ],
-
-    ignores: ["dist", "node_modules"],
-    languageOptions: {
-      globals: globals.browser,
-      ecmaVersion: "latest",
-      sourceType: "module",
-      parserOptions: {
-        project: ["./tsconfig.json"],
-        ecmaFeatures: { jsx: true },
-      },
-    },
-  },
 );
