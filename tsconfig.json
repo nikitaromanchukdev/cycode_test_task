@@ -1,0 +1,37 @@
+{
+  "compilerOptions": {
+    /* === Language and module options === */
+    "target": "esnext",
+    "lib": ["DOM", "DOM.Iterable", "ES2023"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx", // Modern JSX transform
+    "allowJs": false, // Only compile TS/TSX
+    "resolveJsonModule": true,
+    "isolatedModules": true, // Needed for Vite/HMR
+
+    /* === Type checking and strictness === */
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true, // Speeds up builds
+
+    /* === Imports and aliases === */
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+
+    /* === Emission === */
+    "noEmit": true, // Let Vite handle building
+
+    /* === Misc === */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
