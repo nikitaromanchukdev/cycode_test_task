@@ -30,7 +30,9 @@
 
     /* === Misc === */
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+
+    "types": ["vite/client", "styled-components"]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
