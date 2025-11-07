@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import styled from "styled-components";
 
 const LayoutWrapper = styled.div`
@@ -8,9 +8,9 @@ const LayoutWrapper = styled.div`
     min-height: 100vh;
 `;
 
-export const FullWidthSection = styled.section<{ bg?: string }>`
+export const FullWidthSection = styled.section<{ $bg?: string }>`
     width: 100%;
-    background-color: ${({ bg }) => bg || "transparent"};
+    background-color: ${({ $bg }) => $bg || "transparent"};
 `;
 
 export const Content = styled.div`

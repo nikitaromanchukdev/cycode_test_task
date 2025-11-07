@@ -1,34 +1,47 @@
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
+import logo from "@/assets/logo-mono.png";
+import { useRouteLabel } from "@/utils/hooks/useRouteLabel";
 import { FullWidthSection, Content } from "./Layout";
-import { Link } from "react-router-dom";
-
-const Nav = styled.nav`
-    height: 60px;
-
-    gap: 1rem;
-    display: flex;
-    align-items: center;
-`;
+import { Logo } from "./Logo";
 
 export default function Navbar() {
+    const location = useLocation();
+
+    const label = useRouteLabel();
+
     return (
-        <FullWidthSection bg="#0070f3">
-            <Content>
+        <Header $bg="var(--outer-space)">
+            <NavbarContent>
+                <Logo src={logo} alt="Logo" />
+
                 <Nav>
-                    <Link
-                        to="/"
-                        style={{ color: "white", textDecoration: "none" }}
-                    >
-                        Home
-                    </Link>
-                    <Link
-                        to="/about"
-                        style={{ color: "white", textDecoration: "none" }}
-                    >
-                        About
-                    </Link>
+                    <PageTitle>{label}</PageTitle>
                 </Nav>
-            </Content>
-        </FullWidthSection>
+            </NavbarContent>
+        </Header>
     );
 }
+
+const Header = styled(FullWidthSection)``;
+
+const Nav = styled.nav`
+    position: relative;
+
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+`;
+
+const PageTitle = styled.div`
+    color: white;
+`;
+
+const NavbarContent = styled(Content)`
+    display: flex;
+    align-items: center;
+
+    gap: 2rem;
+`;

@@ -1,7 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "./components/Navbar";
-import Layout, { Content } from "./components/Layout";
+import { Content } from "./components/Layout";
+import { useCurrentPageTitle } from "./utils/hooks/useCurrentPageTitle";
+import { appRoutes } from "./routes/routes";
+import { Suspense } from "react";
 
 const Root = styled.main`
     flex: 1;
@@ -9,14 +12,20 @@ const Root = styled.main`
 `;
 
 export default function App() {
+    useCurrentPageTitle();
+
     return (
         <Root>
             <Navbar />
 
             <Content>
-                <Routes>
-                    <Route path="/" element={<Layout>home</Layout>} />
-                </Routes>
+                <Suspense fallback={<div>loading</div>}>
+                    <Routes>
+                        {appRoutes.map(({ path, element }) => (
+                            <Route key={path} path={path} element={element} />
+                        ))}
+                    </Routes>
+                </Suspense>
             </Content>
         </Root>
     );

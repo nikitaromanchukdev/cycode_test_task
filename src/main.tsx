@@ -17,6 +17,12 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.text};
   }
+
+  :root {
+    --smoky-black: #100C08;
+    --dark-charcoal: #333333;
+    --outer-space: #2D383A
+  }
 `;
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
