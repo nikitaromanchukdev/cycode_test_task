@@ -1,31 +1,25 @@
-import { StrictMode } from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import App from "./App";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { theme } from "./styles/theme";
+import { StrictMode } from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { theme } from './styles/theme';
 
 const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-  body {
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-    background-color: ${({ theme }) => theme.background};
-    color: ${({ theme }) => theme.text};
-  }
-
-  :root {
-    --smoky-black: #100C08;
-    --dark-charcoal: #333333;
-    --outer-space: #2D383A
-  }
+    body {
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        background-color: ${({ theme }) => theme.colors.darkCharcoal};
+        color: ${({ theme }) => theme.colors.text};
+    }
 `;
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <ThemeProvider theme={theme}>
             <BrowserRouter>
@@ -33,5 +27,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 <App />
             </BrowserRouter>
         </ThemeProvider>
-    </StrictMode>,
+    </StrictMode>
 );

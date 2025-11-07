@@ -1,13 +1,13 @@
-import path from "path";
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import path from 'path';
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 export default defineConfig({
     plugins: [react()],
     resolve: {
         alias: {
-            "@": path.resolve(__dirname, "./src"),
+            '@': path.resolve(__dirname, './src'),
         },
     },
     server: {
@@ -15,8 +15,8 @@ export default defineConfig({
         open: true, // Auto-open browser on dev start
     },
     build: {
-        target: "esnext", // Matches tsconfig target
-        outDir: "dist",
+        target: 'esnext', // Matches tsconfig target
+        outDir: 'dist',
         sourcemap: true, // Helpful for debugging production builds
         rollupOptions: {
             output: {

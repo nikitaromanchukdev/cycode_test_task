@@ -1,32 +1,35 @@
-import { Routes, Route } from "react-router-dom";
-import styled from "styled-components";
-import Navbar from "./components/Navbar";
-import { Content } from "./components/Layout";
-import { useCurrentPageTitle } from "./utils/hooks/useCurrentPageTitle";
-import { appRoutes } from "./routes/routes";
-import { Suspense } from "react";
+import { Routes, Route } from 'react-router-dom';
+import styled, { useTheme } from 'styled-components';
+import Navbar from './components/Navbar';
+import { FullWidthSection } from './components/Layout';
+import { useCurrentPageTitle } from './utils/hooks/useCurrentPageTitle';
+import { appRoutes } from './routes/routes';
+import { Suspense } from 'react';
 
-const Root = styled.main`
-    flex: 1;
-    width: 100%;
+const Root = styled(FullWidthSection).attrs({ as: 'main' })<{ $bg?: string }>`
+  flex: 1;
+  width: 100%;
+
+  ${({ $bg }) => $bg && `background-color: ${$bg};`}
 `;
 
 export default function App() {
-    useCurrentPageTitle();
+  const theme = useTheme();
+  useCurrentPageTitle();
 
-    return (
-        <Root>
-            <Navbar />
+  return (
+    <>
+      <Navbar />
 
-            <Content>
-                <Suspense fallback={<div>loading</div>}>
-                    <Routes>
-                        {appRoutes.map(({ path, element }) => (
-                            <Route key={path} path={path} element={element} />
-                        ))}
-                    </Routes>
-                </Suspense>
-            </Content>
-        </Root>
-    );
+      <Root $bg={theme.colors.darkCharcoal}>
+        <Suspense fallback={<div>loading</div>}>
+          <Routes>
+            {appRoutes.map(({ path, element }) => (
+              <Route key={path} path={path} element={element} />
+            ))}
+          </Routes>
+        </Suspense>
+      </Root>
+    </>
+  );
 }

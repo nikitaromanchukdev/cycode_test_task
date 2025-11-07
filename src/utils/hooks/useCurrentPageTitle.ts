@@ -1,12 +1,10 @@
-import { useEffect } from "react";
-import { useRouteLabel } from "./useRouteLabel";
+import { useEffect } from 'react';
+import { useRouteLabel } from './useRouteLabel';
 
 export const useCurrentPageTitle = () => {
     const label = useRouteLabel();
 
-    console.log({ label });
-
     useEffect(() => {
-        document.title = label ?? "";
+        document.title = label ?? '';
     }, [location.pathname]);
 };
