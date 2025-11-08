@@ -1,23 +1,10 @@
 import { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
-
-const GlobalStyle = createGlobalStyle`
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-        background-color: ${({ theme }) => theme.colors.darkCharcoal};
-        color: ${({ theme }) => theme.colors.text};
-    }
-`;
+import App from './App';
+import { GlobalStyle } from './styles/global';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <StrictMode>
