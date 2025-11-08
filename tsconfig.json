@@ -1,39 +1,39 @@
 {
-  "compilerOptions": {
-    /* === Language and module options === */
-    "target": "esnext",
-    "lib": ["DOM", "DOM.Iterable", "ES2023"],
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "jsx": "react-jsx", // Modern JSX transform
-    "allowJs": false, // Only compile TS/TSX
-    "resolveJsonModule": true,
-    "isolatedModules": true, // Needed for Vite/HMR
+    "compilerOptions": {
+        /* === Language and module options === */
+        "target": "esnext",
+        "lib": ["DOM", "DOM.Iterable", "ES2023", "ES2024"],
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "jsx": "react-jsx", // Modern JSX transform
+        "allowJs": false, // Only compile TS/TSX
+        "resolveJsonModule": true,
+        "isolatedModules": true, // Needed for Vite/HMR
 
-    /* === Type checking and strictness === */
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true, // Speeds up builds
+        /* === Type checking and strictness === */
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true, // Speeds up builds
 
-    /* === Imports and aliases === */
-    "paths": {
-      "@/*": ["./src/*"]
+        /* === Imports and aliases === */
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+
+        /* === Emission === */
+        "noEmit": true, // Let Vite handle building
+
+        /* === Misc === */
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+
+        "types": ["vite/client", "styled-components"]
     },
-
-    /* === Emission === */
-    "noEmit": true, // Let Vite handle building
-
-    /* === Misc === */
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-
-    "types": ["vite/client", "styled-components"]
-  },
-  "include": ["src", "styled.d.ts"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+    "include": ["src", "styled.d.ts"],
+    "references": [{ "path": "./tsconfig.node.json" }]
 }
