@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 
 export const FormGroup = styled.div`
+    position: relative;
+
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    position: relative;
 `;
 
 export const Label = styled.label`
@@ -54,92 +55,110 @@ export const DropdownMenu = styled.div`
     top: 100%;
     left: 0;
     right: 0;
+    z-index: 2;
+    overflow-y: auto;
+
+    max-height: 250px; // ? make configurable
 
     margin-top: 0.5rem;
-    background: #18181b;
+    background: ${({ theme }) => theme.colors.background.secondary};
     border: 1px solid #27272a;
 
     border-radius: ${({ theme }) => theme.utils.spacing(2)};
 
-    max-height: 250px;
-    overflow-y: auto;
-    z-index: 100;
     box-shadow: 0 4px 12px ${({ theme }) => theme.colors.shadow};
 `;
 
 export const SearchInput = styled.input`
+    padding: 0.75rem; // TODO: implement sizes
+
     width: 100%;
-    padding: 0.75rem;
+
+    background: ${({ theme }) => theme.colors.background.primary};
+
     border: none;
-    border-bottom: 1px solid #27272a;
-    background: #09090b;
-    color: #fafafa;
-    font-size: 0.9rem;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border.primary};
+
+    color: ${({ theme }) => theme.colors.text.primary};
+    font-size: 0.9rem; // TODO: implement sizes
 
     transition: border-color 0.2s ease;
 
     &:focus {
         outline: none;
-        border-bottom-color: #8b5cf6;
+        border-bottom-color: ${({ theme }) => theme.colors.border.focus};
     }
 
     &::placeholder {
-        color: #71717a;
+        color: ${({ theme }) => theme.colors.text.tertiary};
     }
 `;
 
 export const DropdownItem = styled.div`
     padding: 0.75rem;
-    cursor: pointer;
-    transition: background 0.2s ease;
+
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    border-bottom: 1px solid #27272a;
+
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border.primary};
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
 
     &:last-child {
         border-bottom: none;
     }
 
     &:hover {
-        background: #27272a;
+        background: ${({ theme }) => theme.colors.background.hover};
     }
 `;
 
 export const RadioButton = styled.input`
     width: 16px;
     height: 16px;
+
     cursor: pointer;
-    accent-color: #8b5cf6;
+
+    accent-color: ${({ theme }) => theme.colors.brand.secondary};
 `;
 
 export const Checkbox = styled.input`
     width: 16px;
     height: 16px;
+
     cursor: pointer;
-    accent-color: #8b5cf6;
+
+    accent-color: ${({ theme }) => theme.colors.brand.secondary};
 `;
 
 export const ItemLabel = styled.label`
     flex: 1;
-    cursor: pointer;
-    color: #fafafa;
+
+    color: ${({ theme }) => theme.colors.text.primary};
     font-size: 0.95rem;
+
+    cursor: pointer;
 `;
 
 export const SelectedCount = styled.span`
-    font-size: 0.85rem;
-    color: #71717a;
     margin-left: 0.5rem;
+
+    font-size: 0.85rem;
+    color: ${({ theme }) => theme.colors.text.secondary};
 `;
 
 export const EmptyState = styled.div`
     padding: 1rem;
+
+    color: ${({ theme }) => theme.colors.text.secondary};
     text-align: center;
-    color: #71717a;
 `;
 
 export const UserEmail = styled.div`
     font-size: 0.85rem;
-    color: #71717a;
+
+    color: ${({ theme }) => theme.colors.text.secondary};
 `;
