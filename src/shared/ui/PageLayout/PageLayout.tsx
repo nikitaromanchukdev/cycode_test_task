@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 import { PageContainer, PageTitle, Content } from './PageLayout.styles';
+import { ComponentProps, forwardRef } from 'react';
 
-interface PageLayoutProps {
+type PageContainerProps = ComponentProps<typeof PageContainer>;
+interface PageLayoutProps extends PageContainerProps {
     title?: string;
     children: React.ReactNode;
 }
-export const PageLayout: React.FC<PageLayoutProps> = props => {
-    const { title, children } = props;
+export const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>((props, ref) => {
+    const { title, children, className, ...nativeProps } = props;
 
     return (
-        <PageContainer>
+        <PageContainer ref={ref} className={className} {...nativeProps}>
             {title && (
                 <TitleSection>
                     <PageTitle>{title}</PageTitle>
@@ -19,8 +21,8 @@ export const PageLayout: React.FC<PageLayoutProps> = props => {
             {children}
         </PageContainer>
     );
-};
+});
 
 const TitleSection = styled(Content).attrs({ as: 'section' })`
-    padding: ${({ theme }) => theme.utils.spacing(20)}px 0;
+    padding: ${({ theme }) => theme.utils.spacing(20)} 0;
 `;

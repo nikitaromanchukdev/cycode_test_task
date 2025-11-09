@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const PageContainer = styled.div`
+    position: relative;
     min-height: calc(100vh - 72px); // TODO: replace 72px magic number
 `;
 
@@ -11,6 +12,6 @@ export const PageTitle = styled.h1`
 `;
 
 export const Content = styled.div`
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
 `;
