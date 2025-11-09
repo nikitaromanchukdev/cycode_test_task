@@ -2,12 +2,17 @@ import styled from 'styled-components';
 import { NavLink as _NavLink } from 'react-router-dom';
 
 export const NavBar = styled.nav`
+    position: sticky;
+    top: 0;
+
     background: #18181b;
     border-bottom: 1px solid #27272a;
     padding: 1rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    z-index: 2;
 `;
 
 export const Logo = styled.div`
