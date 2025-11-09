@@ -6,57 +6,68 @@ export const WelcomeSection = styled(Content)`
 `;
 
 export const WelcomeMessage = styled.h2`
-    font-size: 2rem;
-    color: #fafafa;
     margin-bottom: 1.5rem;
+
+    color: ${({ theme }) => theme.colors.text.primary};
+    font-size: 2rem;
     line-height: 1.5;
 `;
 
 export const WelcomeText = styled.p`
-    font-size: 1.1rem;
-    color: #a1a1aa;
     margin-bottom: 2rem;
+
+    color: ${({ theme }) => theme.colors.text.secondary};
+    font-size: 1.1rem;
     line-height: 1.6;
 `;
 
 export const SubscriptionInfo = styled.div`
-    background: #18181b;
-    border: 1px solid #27272a;
-    border-radius: 12px;
     padding: 2rem;
     margin: 2rem 0;
+
+    background: ${({ theme }) => theme.colors.background.secondary};
+
+    border: 1px solid ${({ theme }) => theme.colors.border.primary};
+    border-radius: ${({ theme }) => theme.utils.spacing(3)};
+
     text-align: left;
 `;
 
 export const SubscriptionTitle = styled.h3`
-    font-size: 1.5rem;
-    color: #22c55e;
     margin-bottom: 1rem;
+
     display: flex;
     align-items: center;
     gap: 0.5rem;
+
+    color: ${({ theme }) => theme.colors.status.success};
+    font-size: 1.5rem;
 `;
 
 export const InfoLabel = styled.div`
-    font-size: 0.9rem;
-    color: #71717a;
     margin-top: 1rem;
     margin-bottom: 0.25rem;
+
+    font-size: 0.9rem;
+    color: ${({ theme }) => theme.colors.text.tertiary};
 `;
 
 export const InfoValue = styled.div`
-    font-size: 1.1rem;
-    color: #fafafa;
     margin-bottom: 0.5rem;
+
+    font-size: 1.1rem;
+    color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 export const UserList = styled.ul`
-    list-style: none;
     margin-top: 0.5rem;
+
+    list-style: none;
 `;
 
 export const UserItem = styled.li`
-    color: #a1a1aa;
     padding: 0.25rem 0;
+
+    color: ${({ theme }) => theme.colors.text.secondary};
     font-size: 1rem;
 `;
