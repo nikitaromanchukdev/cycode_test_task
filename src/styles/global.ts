@@ -2,14 +2,16 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     * {
-        box-sizing: border-box;
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
     }
 
     body {
-        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-        /* background-color: ${({ theme }) => theme.colors.darkCharcoal}; */
-        /* color: ${({ theme }) => theme.colors.text}; */
+        font-family: BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+
+        background: ${({ theme }) => theme.colors.background.primary};
+        color: ${({ theme }) => theme.colors.text.primary};
     }
 `;

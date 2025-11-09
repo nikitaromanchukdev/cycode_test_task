@@ -1,4 +1,4 @@
-import { appRoutes } from '@/routes/routes';
+import { appRoutes } from '@/app/routes/routes';
 import { useLocation } from 'react-router-dom';
 
 /**
