@@ -5,7 +5,7 @@ import { GlobalStyle } from '../styles/global';
 import { Route, Routes } from 'react-router-dom';
 import { appRoutes } from './routes/routes';
 import styled from 'styled-components';
-import StoreProvider from './providers/store/storeProvider';
+import StoreProvider from './providers/store/StoreProvider';
 import { createLocalStorageMiddleware, loadMiddlewareState } from './providers/store/middleware';
 
 const App: React.FC = () => {
