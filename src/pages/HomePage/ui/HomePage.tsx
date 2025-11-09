@@ -1,19 +1,10 @@
 import { Subscription } from '@/entities/subscription/types';
 import { PageLayout } from '@/shared/ui/PageLayout/PageLayout';
-import {
-    InfoLabel,
-    InfoValue,
-    SubscriptionInfo,
-    SubscriptionTitle,
-    UserItem,
-    UserList,
-    WelcomeMessage,
-    WelcomeSection,
-    WelcomeText,
-} from './HomePage.styles';
+import { WelcomeMessage, WelcomeSection, WelcomeText } from './HomePage.styles';
 import { PrimaryButton } from '@/shared/ui/Button.styles';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { SubscriptionDetails } from '@/features/subscription/ui/SubscriptionDetails/SubscriptionDetails';
 
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
@@ -29,32 +20,21 @@ const HomePage: React.FC = () => {
     return (
         <PageLayout title="Welcome Home">
             <WelcomeSection>
-                {subscription ? (
+                {subscription && (
                     <>
-                        <SubscriptionInfo>
-                            <SubscriptionTitle>✓ Subscribed</SubscriptionTitle>
-
-                            <InfoLabel>Organization:</InfoLabel>
-
-                            <InfoValue>{subscription.organizationName}</InfoValue>
-
-                            <InfoLabel>Selected Users:</InfoLabel>
-
-                            <UserList>
-                                {subscription.userNames.map((name, idx) => (
-                                    <UserItem key={idx}>• {name}</UserItem>
-                                ))}
-                            </UserList>
-                        </SubscriptionInfo>
+                        <SubscriptionDetails subscription={subscription} />
 
                         <WelcomeText>
                             You're all set! You'll receive updates for the selected organization and
                             users.
                         </WelcomeText>
                     </>
-                ) : (
+                )}
+
+                {!subscription && (
                     <>
                         <WelcomeMessage>Welcome to TechVista Inc.</WelcomeMessage>
+
                         <WelcomeText>
                             Discover innovative solutions that transform your business. Join
                             thousands of satisfied customers who trust us to deliver excellence.

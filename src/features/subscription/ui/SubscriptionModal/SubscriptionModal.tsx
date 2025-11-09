@@ -32,11 +32,9 @@ interface SubscriptionModalProps {
     onSubmit: (orgId: number, userIds: number[]) => void;
 }
 
-export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
-    isOpen,
-    onClose,
-    onSubmit,
-}) => {
+export const SubscriptionModal: React.FC<SubscriptionModalProps> = props => {
+    const { isOpen, onClose, onSubmit } = props;
+
     const [selectedOrgId, setSelectedOrgId] = useState<number | null>(null);
     const [selectedUserIds, setSelectedUserIds] = useState<number[]>([]);
     const [orgDropdownOpen, setOrgDropdownOpen] = useState<boolean>(false);
@@ -150,7 +148,7 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = ({
                                       ? `${selectedUserIds.length} user${selectedUserIds.length > 1 ? 's' : ''} selected`
                                       : 'Select users'}
                             </span>
-                            <span>{userDropdownOpen ? '▲' : '▼'}</span>
+                            <span>{userDropdownOpen ? '▲' : '▼'}</span> {/* TODO: rotate instead */}
                         </DropdownButton>
 
                         {userDropdownOpen && selectedOrgId && (
