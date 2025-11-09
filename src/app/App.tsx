@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import Header from '../widgets/Header/ui/Header';
 import { GlobalStyle } from '../styles/global';
 
@@ -7,11 +7,12 @@ import { appRoutes } from './routes/routes';
 import styled from 'styled-components';
 import StoreProvider from './providers/store/StoreProvider';
 import { createLocalStorageMiddleware, loadMiddlewareState } from './providers/store/middleware';
+import { LoadingOverlay } from '@/shared/ui/LoadingOverlay/LoadingOverlay';
 
 const App: React.FC = () => {
     const localStorageMiddleware = createLocalStorageMiddleware({
         key: 'store',
-        fields: ['subscription', 'companyName'],
+        fields: ['subscription'],
     });
 
     const middleware = [localStorageMiddleware];
@@ -20,19 +21,19 @@ const App: React.FC = () => {
 
     return (
         <StoreProvider initialState={initialState} middleware={middleware}>
-            <GlobalStyle />
-            <Header />
+            <Suspense fallback={<LoadingOverlay fullscreen />}>
+                <GlobalStyle />
+                <Header />
 
-            <Root>
-                {/* TODO */}
-                <Suspense fallback={<div>loading</div>}>
+                <Root>
+                    {/* TODO */}
                     <Routes>
                         {appRoutes.map(({ path, element }) => (
                             <Route key={path} path={path} element={element} />
                         ))}
                     </Routes>
-                </Suspense>
-            </Root>
+                </Root>
+            </Suspense>
         </StoreProvider>
     );
 };
