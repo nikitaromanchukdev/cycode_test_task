@@ -5,14 +5,14 @@ import { Subscription } from '@/entities/subscription/types';
 import { queryUsersGroupedByOrg } from '@/entities/user/api'; // TODO
 import { queryOrgs } from '@/entities/organization/api'; // TODO
 import { useNavigate } from 'react-router-dom';
+import { useStore } from '@/app/providers/store/useStore';
 
-/* TEMP */
 const organizations = queryOrgs(); // TODO
 const usersByOrg = queryUsersGroupedByOrg(); // TODO
-/* TEMP end */
 
 const SubscribePage: React.FC = () => {
     const navigate = useNavigate();
+    const { setSubscription } = useStore();
 
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
@@ -27,7 +27,7 @@ const SubscribePage: React.FC = () => {
             userNames: users.map(u => u.name),
         };
 
-        localStorage.setItem('subscription', JSON.stringify(newSubscription));
+        setSubscription(newSubscription);
 
         setIsModalOpen(false);
         navigate('/');

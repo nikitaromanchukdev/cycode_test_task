@@ -22,6 +22,7 @@ export const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>((props, re
         </PageContainer>
     );
 });
+PageLayout.displayName = 'PageLayout';
 
 const TitleSection = styled(Content).attrs({ as: 'section' })`
     padding: ${({ theme }) => theme.utils.spacing(20)} 0;

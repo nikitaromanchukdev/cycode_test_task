@@ -1,21 +1,14 @@
-import { Subscription } from '@/entities/subscription/types';
 import { PageLayout } from '@/shared/ui/PageLayout/PageLayout';
 import { WelcomeMessage, WelcomeSection, WelcomeText } from './HomePage.styles';
 import { PrimaryButton } from '@/shared/ui/Button.styles';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
 import { SubscriptionDetails } from '@/features/subscription/ui/SubscriptionDetails/SubscriptionDetails';
+import { useStore } from '@/app/providers/store/useStore';
 
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
-    const [subscription, setSubscription] = useState<Subscription | null>(null);
 
-    useEffect(() => {
-        const saved = localStorage.getItem('subscription');
-        if (saved) {
-            setSubscription(JSON.parse(saved));
-        }
-    }, []);
+    const { companyName, subscription } = useStore();
 
     return (
         <PageLayout title="Welcome Home">
@@ -33,7 +26,7 @@ const HomePage: React.FC = () => {
 
                 {!subscription && (
                     <>
-                        <WelcomeMessage>Welcome to TechVista Inc.</WelcomeMessage>
+                        <WelcomeMessage>Welcome to {companyName}.</WelcomeMessage>
 
                         <WelcomeText>
                             Discover innovative solutions that transform your business. Join

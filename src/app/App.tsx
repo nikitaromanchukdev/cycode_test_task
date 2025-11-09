@@ -5,14 +5,26 @@ import { GlobalStyle } from '../styles/global';
 import { Route, Routes } from 'react-router-dom';
 import { appRoutes } from './routes/routes';
 import styled from 'styled-components';
+import StoreProvider from './providers/store/storeProvider';
+import { createLocalStorageMiddleware, loadMiddlewareState } from './providers/store/middleware';
 
 const App: React.FC = () => {
+    const localStorageMiddleware = createLocalStorageMiddleware({
+        key: 'store',
+        fields: ['subscription', 'companyName'],
+    });
+
+    const middleware = [localStorageMiddleware];
+
+    const initialState = loadMiddlewareState(middleware);
+
     return (
-        <>
+        <StoreProvider initialState={initialState} middleware={middleware}>
             <GlobalStyle />
             <Header />
 
             <Root>
+                {/* TODO */}
                 <Suspense fallback={<div>loading</div>}>
                     <Routes>
                         {appRoutes.map(({ path, element }) => (
@@ -21,7 +33,7 @@ const App: React.FC = () => {
                     </Routes>
                 </Suspense>
             </Root>
-        </>
+        </StoreProvider>
     );
 };
 
