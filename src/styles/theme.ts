@@ -1,6 +1,5 @@
 import { colorWithAlpha } from '@/utils/color';
 
-const FACTOR = 5;
 export const theme = {
     /**
      * @deprecated
@@ -63,9 +62,10 @@ export const theme = {
     },
     utils: {
         spacingBase: 4,
+        opacityFactor: 5,
 
         withOpacity(color: string, elevation: number) {
-            const percent = 100 - elevation * FACTOR;
+            const percent = 100 - elevation * this.opacityFactor;
 
             return colorWithAlpha(color, percent);
         },
