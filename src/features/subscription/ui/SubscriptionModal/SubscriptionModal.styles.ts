@@ -1,4 +1,4 @@
-import { ActionButton } from '@/shared/ui/Button.styles';
+import { PrimaryButton } from '@/shared/ui/Button.styles';
 import styled, { keyframes } from 'styled-components';
 
 export const ModalOverlay = styled.div<{ $isOpen: boolean }>`
@@ -93,7 +93,7 @@ export const FormContainer = styled.div`
     overflow-y: auto;
 `;
 
-export const SubmitButton = styled(ActionButton)`
+export const SubmitButton = styled(PrimaryButton)`
     margin-top: auto;
 
     padding: ${({ theme }) => theme.utils.spacing(3)};

@@ -11,7 +11,7 @@ import {
     WelcomeSection,
     WelcomeText,
 } from './HomePage.styles';
-import { ActionButton } from '@/shared/ui/Button.styles';
+import { PrimaryButton } from '@/shared/ui/Button.styles';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -61,9 +61,9 @@ const HomePage: React.FC = () => {
                             Stay updated with our latest news and exclusive offers.
                         </WelcomeText>
 
-                        <ActionButton onClick={() => navigate('subscriptions')}>
+                        <PrimaryButton onClick={() => navigate('subscriptions')}>
                             Get Started
-                        </ActionButton>
+                        </PrimaryButton>
                     </>
                 )}
             </WelcomeSection>

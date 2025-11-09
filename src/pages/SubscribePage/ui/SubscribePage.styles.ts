@@ -1,4 +1,4 @@
-import { ActionButton } from '@/shared/ui/Button.styles';
+import { PrimaryButton } from '@/shared/ui/Button.styles';
 import { PageLayout } from '@/shared/ui/PageLayout/PageLayout';
 import { Content } from '@/shared/ui/PageLayout/PageLayout.styles';
 import styled from 'styled-components';
@@ -16,7 +16,7 @@ export const SubscribePageLayout = styled(PageLayout)`
     flex-direction: column;
 `;
 
-export const SubscribeButton = styled(ActionButton)`
+export const SubscribeButton = styled(PrimaryButton)`
     padding: ${({ theme }) => theme.utils.spacing(6)} ${({ theme }) => theme.utils.spacing(12)};
 
     &:hover {

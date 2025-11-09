@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ActionButton = styled.button`
+export const PrimaryButton = styled.button`
     padding: ${({ theme }) => theme.utils.spacing(4)} ${({ theme }) => theme.utils.spacing(10)};
 
     background: linear-gradient(
