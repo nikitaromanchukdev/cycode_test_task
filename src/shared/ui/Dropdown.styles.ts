@@ -24,7 +24,7 @@ export const DropdownButton = styled.button`
     background: ${({ theme }) => theme.colors.background.primary};
 
     border: 1px solid ${({ theme }) => theme.colors.border.primary};
-    border-radius: 8px;
+    border-radius: ${({ theme }) => theme.utils.spacing(2)};
 
     color: ${({ theme }) => theme.colors.text.primary};
     font-size: 1rem;
@@ -62,11 +62,11 @@ export const DropdownMenu = styled.div`
 
     margin-top: 0.5rem;
     background: ${({ theme }) => theme.colors.background.secondary};
-    border: 1px solid #27272a;
+    border: 1px solid ${({ theme }) => theme.colors.border.primary};
 
     border-radius: ${({ theme }) => theme.utils.spacing(2)};
 
-    box-shadow: 0 4px 12px ${({ theme }) => theme.colors.shadow};
+    box-shadow: 0 4px 12px ${({ theme }) => theme.colors.shadow.dark};
 `;
 
 export const SearchInput = styled.input`
