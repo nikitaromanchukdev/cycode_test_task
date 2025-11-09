@@ -2,6 +2,9 @@ import { colorWithAlpha } from '@/utils/color';
 
 const FACTOR = 5;
 export const theme = {
+    /**
+     * @deprecated
+     */
     legacyColors: {
         backgroundLight: '#F5F5F5',
         backgroundDark: '#121212',
@@ -34,11 +37,14 @@ export const theme = {
         },
         brand: {
             gradient: {
-                from: '#8b5cf6',
-                to: '#6366f1',
+                from: '#667eea',
+                to: '#764ba2',
+
+                angle: '135deg',
             },
-            primary: '#8b5cf6',
-            secondary: '#6366f1',
+
+            primary: '#667eea',
+            secondary: '#764ba2',
         },
         status: {
             success: '#22c55e',
@@ -46,9 +52,13 @@ export const theme = {
 
         overlay: 'rgba(0, 0, 0, 0.8)',
         overlayLight: 'rgba(0, 0, 0, 0.5)',
-        shadow: 'rgba(0, 0, 0, 0.3)',
-        brandShadow: 'rgba(139, 92, 246, 0.3)',
-        brandShadowHover: 'rgba(139, 92, 246, 0.4)',
+
+        shadow: {
+            dark: 'rgba(0, 0, 0, 0.3)',
+            brand: 'rgba(139, 92, 246, 0.3)',
+            brandHover: 'rgba(102, 126, 234, 0.6)',
+        },
+
         focusRing: 'rgba(139, 92, 246, 0.1)',
     },
     utils: {
@@ -60,8 +70,8 @@ export const theme = {
             return colorWithAlpha(color, percent);
         },
         borderRadius() {},
-        spacing(factor: number) {
-            return factor * this.spacingBase;
+        spacing(factor: number, unit = 'px') {
+            return `${factor * this.spacingBase}${unit}`;
         },
     },
 } as const;
