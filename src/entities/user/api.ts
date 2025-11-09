@@ -1,4 +1,4 @@
-import { User } from '@/entities/user/types/user';
+import { User } from '@/entities/user/types';
 
 const users: User[] = [
     {

@@ -1,4 +1,4 @@
-import { Organization } from '@/entities/organization/types/organization';
+import { Organization } from '@/entities/organization/types';
 
 const organizations: Organization[] = [
     { id: 1, name: 'TechCorp Solutions' },
