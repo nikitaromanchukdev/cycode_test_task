@@ -44,7 +44,7 @@ export const theme = {
             },
 
             primary: '#667eea',
-            secondary: '#764ba2',
+            secondary: '#8b5cf6',
         },
         status: {
             success: '#22c55e',
