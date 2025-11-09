@@ -1,8 +1,7 @@
 import styled from 'styled-components';
+import { Content } from '@/shared/ui/PageLayout/PageLayout.styles';
 
-export const WelcomeSection = styled.div`
-    max-width: 800px;
-    margin: 4rem auto;
+export const WelcomeSection = styled(Content)`
     text-align: center;
 `;
 

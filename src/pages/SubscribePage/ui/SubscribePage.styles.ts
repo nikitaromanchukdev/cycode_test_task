@@ -1,8 +1,16 @@
+import { PageLayout } from '@/shared/ui/PageLayout/PageLayout';
+import { Content } from '@/shared/ui/PageLayout/PageLayout.styles';
 import styled from 'styled-components';
 
-export const SubscribeSection = styled.div`
+export const SubscribeSection = styled(Content)`
+    flex-grow: 1;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 200px);
+`;
+
+export const SubscribePageLayout = styled(PageLayout)`
+    display: flex;
+    flex-direction: column;
 `;
