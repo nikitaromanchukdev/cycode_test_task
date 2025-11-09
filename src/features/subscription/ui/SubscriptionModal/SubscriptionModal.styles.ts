@@ -39,58 +39,74 @@ export const ModalContent = styled.div<{ $isOpen: boolean }>`
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 50vw;
+
+    padding: 2rem;
+
+    max-height: 600px;
     max-width: 600px;
     height: 50vh;
-    max-height: 600px;
-    background: #18181b;
-    border: 1px solid #27272a;
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    animation: ${props => (props.$isOpen ? scaleIn : scaleOut)} 0.3s ease forwards;
+    width: 50vw;
+
     display: flex;
     flex-direction: column;
+
+    background: ${({ theme }) => theme.colors.background.secondary};
+
+    border: 1px solid ${({ theme }) => theme.colors.border.primary};
+    border-radius: ${({ theme }) => theme.utils.spacing(3)};
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+
+    animation: ${props => (props.$isOpen ? scaleIn : scaleOut)} 0.3s ease forwards;
 `;
 
 export const ModalHeader = styled.div`
+    margin-bottom: 2rem;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
 `;
 
 export const ModalTitle = styled.h2`
     font-size: 1.8rem;
-    color: #fafafa;
+    color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 export const CloseButton = styled.button`
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: #71717a;
-    cursor: pointer;
     width: 40px;
     height: 40px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background: none;
+
+    border: none;
+
+    color: ${({ theme }) => theme.colors.text.tertiary};
+    font-size: 2rem;
+
+    cursor: pointer;
+
     border-radius: 8px;
     transition: all 0.2s ease;
 
     &:hover {
-        background: #27272a;
-        color: #fafafa;
+        background: ${({ theme }) => theme.colors.background.hover};
+        color: ${({ theme }) => theme.colors.text.primary};
     }
 `;
 
 export const FormContainer = styled.div`
+    overflow-y: auto;
+
+    flex: 1;
+
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    flex: 1;
-    overflow-y: auto;
 `;
 
 export const SubmitButton = styled(PrimaryButton)`
