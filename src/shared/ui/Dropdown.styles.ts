@@ -8,36 +8,43 @@ export const FormGroup = styled.div`
 `;
 
 export const Label = styled.label`
+    color: ${({ theme }) => theme.colors.text.primary};
     font-size: 0.95rem;
-    color: #fafafa;
     font-weight: 500;
 `;
 
 export const DropdownButton = styled.button`
     padding: 0.75rem;
-    border: 1px solid #27272a;
-    border-radius: 8px;
-    font-size: 1rem;
-    background: #09090b;
-    color: #fafafa;
-    cursor: pointer;
-    text-align: left;
-    transition: all 0.2s ease;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 
+    background: ${({ theme }) => theme.colors.background.primary};
+
+    border: 1px solid ${({ theme }) => theme.colors.border.primary};
+    border-radius: 8px;
+
+    color: ${({ theme }) => theme.colors.text.primary};
+    font-size: 1rem;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
     &:hover {
-        border-color: #3f3f46;
+        border-color: ${({ theme }) => theme.colors.border.hover};
     }
 
     &:focus {
         outline: none;
-        border-color: #8b5cf6;
+        border-color: ${({ theme }) => theme.colors.border.focus};
     }
 
     &:disabled {
         cursor: not-allowed;
+
         opacity: 0.5;
     }
 `;
@@ -47,14 +54,17 @@ export const DropdownMenu = styled.div`
     top: 100%;
     left: 0;
     right: 0;
+
     margin-top: 0.5rem;
     background: #18181b;
     border: 1px solid #27272a;
-    border-radius: 8px;
+
+    border-radius: ${({ theme }) => theme.utils.spacing(2)};
+
     max-height: 250px;
     overflow-y: auto;
     z-index: 100;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px ${({ theme }) => theme.colors.shadow};
 `;
 
 export const SearchInput = styled.input`
@@ -64,7 +74,9 @@ export const SearchInput = styled.input`
     border-bottom: 1px solid #27272a;
     background: #09090b;
     color: #fafafa;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+
+    transition: border-color 0.2s ease;
 
     &:focus {
         outline: none;
