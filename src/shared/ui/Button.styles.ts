@@ -1,67 +1,31 @@
 import styled from 'styled-components';
 
 export const ActionButton = styled.button`
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    padding: ${({ theme }) => theme.utils.spacing(4)} ${({ theme }) => theme.utils.spacing(10)};
+
+    background: linear-gradient(
+        ${({ theme }) => theme.colors.brand.gradient.angle},
+        ${({ theme }) => theme.colors.brand.gradient.from} 0%,
+        ${({ theme }) => theme.colors.brand.gradient.to} 100%
+    );
+
     border: none;
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
+    border-radius: ${({ theme }) => theme.utils.spacing(2)};
+
+    color: ${({ theme }) => theme.colors.text.primary};
     font-size: 1.1rem;
     font-weight: 600;
-    cursor: pointer;
+
     transition:
         transform 0.2s ease,
         box-shadow 0.2s ease;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 4px 15px ${({ theme }) => theme.colors.shadow.brand};
+
+    cursor: pointer;
 
     &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-    }
-
-    &:active {
-        transform: translateY(0);
-    }
-`;
-
-export const SubscribeButton = styled.button`
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 1.5rem 3rem;
-    border-radius: 50px;
-    font-size: 1.3rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
-
-    &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
-    }
-
-    &:active {
-        transform: translateY(0);
-    }
-`;
-
-export const SubmitButton = styled.button`
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 0.75rem;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    margin-top: auto;
-
-    &:hover {
-        transform: translateY(-1px);
+        box-shadow: 0 6px 20px ${({ theme }) => theme.colors.shadow.brandHover};
     }
 
     &:active {

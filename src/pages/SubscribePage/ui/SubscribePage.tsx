@@ -1,6 +1,4 @@
-import { PageLayout } from '@/shared/ui/PageLayout/PageLayout';
-import { SubscribePageLayout, SubscribeSection } from './SubscribePage.styles';
-import { SubscribeButton } from '@/shared/ui/Button.styles';
+import { SubscribeButton, SubscribePageLayout, SubscribeSection } from './SubscribePage.styles';
 import { useState } from 'react';
 import { SubscriptionModal } from '@/features/subscription/ui/SubscriptionModal/SubscriptionModal';
 import { Subscription } from '@/entities/subscription/types';

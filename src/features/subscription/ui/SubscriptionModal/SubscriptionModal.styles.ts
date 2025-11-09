@@ -1,3 +1,4 @@
+import { ActionButton } from '@/shared/ui/Button.styles';
 import styled, { keyframes } from 'styled-components';
 
 export const ModalOverlay = styled.div<{ $isOpen: boolean }>`
@@ -90,4 +91,18 @@ export const FormContainer = styled.div`
     gap: 1.5rem;
     flex: 1;
     overflow-y: auto;
+`;
+
+export const SubmitButton = styled(ActionButton)`
+    margin-top: auto;
+
+    padding: ${({ theme }) => theme.utils.spacing(3)};
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
 `;

@@ -8,6 +8,7 @@ import {
     ModalHeader,
     ModalOverlay,
     ModalTitle,
+    SubmitButton,
 } from './SubscriptionModal.styles';
 import {
     Checkbox,
@@ -23,7 +24,6 @@ import {
     SelectedCount,
     UserEmail,
 } from '@/shared/ui/Dropdown.styles';
-import { SubmitButton } from '@/shared/ui/Button.styles';
 
 const organizations = queryOrgs();
 const usersByOrg = queryUsersGroupedByOrg();
