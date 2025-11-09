@@ -1,26 +1,42 @@
 import styled from 'styled-components';
 
-export const FormGroup = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-`;
-
-export const Label = styled.label`
-    font-size: 0.95rem;
-    color: #4a5568;
-    font-weight: 500;
-`;
-
 export const Input = styled.input`
-    padding: 0.75rem;
-    border: 2px solid #e2e8f0;
+    padding: 0.75rem; // TODO: implement sizes
+
+    background: ${({ theme }) => theme.colors.background.primary};
+
+    border: 1px solid ${({ theme }) => theme.colors.border.primary};
     border-radius: 8px;
+
+    color: ${({ theme }) => theme.colors.text.primary};
     font-size: 1rem;
+
     transition: border-color 0.2s ease;
 
     &:focus {
         outline: none;
-        border-color: #667eea;
+        border-color: ${({ theme }) => theme.colors.border.focus};
     }
+
+    &::placeholder {
+        color: ${({ theme }) => theme.colors.text.tertiary};
+    }
+`;
+
+export const RadioButton = styled.input`
+    width: 16px;
+    height: 16px;
+
+    cursor: pointer;
+
+    accent-color: ${({ theme }) => theme.colors.brand.secondary};
+`;
+
+export const Checkbox = styled.input`
+    width: 16px;
+    height: 16px;
+
+    cursor: pointer;
+
+    accent-color: ${({ theme }) => theme.colors.brand.secondary};
 `;

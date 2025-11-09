@@ -11,19 +11,17 @@ import {
     SubmitButton,
 } from './SubscriptionModal.styles';
 import {
-    Checkbox,
     DropdownButton,
     DropdownItem,
     DropdownMenu,
     EmptyState,
-    FormGroup,
     ItemLabel,
-    Label,
-    RadioButton,
     SearchInput,
     SelectedCount,
     UserEmail,
 } from '@/shared/ui/Dropdown.styles';
+import { Checkbox, RadioButton } from '@/shared/ui/Input.styles';
+import { FormGroup, Label } from '@/shared/ui/Form.styles';
 
 const organizations = queryOrgs();
 const usersByOrg = queryUsersGroupedByOrg();

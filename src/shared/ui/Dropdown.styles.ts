@@ -1,18 +1,5 @@
 import styled from 'styled-components';
-
-export const FormGroup = styled.div`
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-`;
-
-export const Label = styled.label`
-    color: ${({ theme }) => theme.colors.text.primary};
-    font-size: 0.95rem;
-    font-weight: 500;
-`;
+import { Input } from './Input.styles';
 
 export const DropdownButton = styled.button`
     padding: 0.75rem;
@@ -69,29 +56,14 @@ export const DropdownMenu = styled.div`
     box-shadow: 0 4px 12px ${({ theme }) => theme.colors.shadow.dark};
 `;
 
-export const SearchInput = styled.input`
-    padding: 0.75rem; // TODO: implement sizes
-
+export const SearchInput = styled(Input)`
     width: 100%;
 
-    background: ${({ theme }) => theme.colors.background.primary};
-
     border: none;
+    border-radius: 0%;
     border-bottom: 1px solid ${({ theme }) => theme.colors.border.primary};
 
-    color: ${({ theme }) => theme.colors.text.primary};
     font-size: 0.9rem; // TODO: implement sizes
-
-    transition: border-color 0.2s ease;
-
-    &:focus {
-        outline: none;
-        border-bottom-color: ${({ theme }) => theme.colors.border.focus};
-    }
-
-    &::placeholder {
-        color: ${({ theme }) => theme.colors.text.tertiary};
-    }
 `;
 
 export const DropdownItem = styled.div`
@@ -114,24 +86,6 @@ export const DropdownItem = styled.div`
     &:hover {
         background: ${({ theme }) => theme.colors.background.hover};
     }
-`;
-
-export const RadioButton = styled.input`
-    width: 16px;
-    height: 16px;
-
-    cursor: pointer;
-
-    accent-color: ${({ theme }) => theme.colors.brand.secondary};
-`;
-
-export const Checkbox = styled.input`
-    width: 16px;
-    height: 16px;
-
-    cursor: pointer;
-
-    accent-color: ${({ theme }) => theme.colors.brand.secondary};
 `;
 
 export const ItemLabel = styled.label`
