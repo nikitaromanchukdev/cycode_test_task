@@ -51,13 +51,18 @@ export const theme = {
         brandShadowHover: 'rgba(139, 92, 246, 0.4)',
         focusRing: 'rgba(139, 92, 246, 0.1)',
     },
-    fn: {
+    utils: {
+        spacingBase: 4,
+
         withOpacity(color: string, elevation: number) {
             const percent = 100 - elevation * FACTOR;
 
             return colorWithAlpha(color, percent);
         },
         borderRadius() {},
+        spacing(factor: number) {
+            return factor * this.spacingBase;
+        },
     },
 } as const;
 
