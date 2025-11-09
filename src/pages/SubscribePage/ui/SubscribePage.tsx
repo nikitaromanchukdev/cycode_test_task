@@ -1,5 +1,5 @@
 import { PageLayout } from '@/shared/ui/PageLayout/PageLayout';
-import { SubscribeSection } from './SubscribePage.styles';
+import { SubscribePageLayout, SubscribeSection } from './SubscribePage.styles';
 import { SubscribeButton } from '@/shared/ui/Button.styles';
 import { useState } from 'react';
 import { SubscriptionModal } from '@/features/subscription/ui/SubscriptionModal/SubscriptionModal';
@@ -36,7 +36,7 @@ const SubscribePage: React.FC = () => {
     };
 
     return (
-        <PageLayout title="Subscribe to Our Newsletter">
+        <SubscribePageLayout title="Subscribe to Our Newsletter">
             <SubscribeSection>
                 <SubscribeButton onClick={() => setIsModalOpen(true)}>Subscribe</SubscribeButton>
             </SubscribeSection>
@@ -46,7 +46,7 @@ const SubscribePage: React.FC = () => {
                 onClose={() => setIsModalOpen(false)}
                 onSubmit={handleSubmit}
             />
-        </PageLayout>
+        </SubscribePageLayout>
     );
 };
 
