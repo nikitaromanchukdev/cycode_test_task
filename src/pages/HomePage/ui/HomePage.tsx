@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
                 {subscription ? (
                     <>
                         <SubscriptionInfo>
-                            <SubscriptionTitle>✓ Subscribed!</SubscriptionTitle>
+                            <SubscriptionTitle>✓ Subscribed</SubscriptionTitle>
 
                             <InfoLabel>Organization:</InfoLabel>
 
