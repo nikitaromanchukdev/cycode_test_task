@@ -6,8 +6,8 @@ export const PageContainer = styled.div`
 `;
 
 export const PageTitle = styled.h1`
-    font-size: 2.5rem;
-    color: #fafafa;
+    font-size: 2.5em;
+    color: ${({ theme }) => theme.colors.text.primary};
     text-align: center;
 `;
 
