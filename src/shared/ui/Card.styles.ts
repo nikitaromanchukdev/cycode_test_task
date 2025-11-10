@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { ThemeColors } from '@/styles/theme';
 
 export const Card = styled.div`
     padding: ${({ theme }) => theme.utils.spacing(8)};
@@ -13,13 +12,13 @@ export const Card = styled.div`
     text-align: left;
 `;
 
-export const CardTitle = styled.h3<{ $color?: ThemeColors }>`
+export const CardTitle = styled.h3`
     margin-bottom: 1rem;
 
     display: flex;
     align-items: center;
     gap: 0.5rem;
 
-    color: ${({ $color, theme }) => $color || theme.colors.status.success};
+    color: ${({ theme }) => theme.colors.status.success};
     font-size: 1.5rem;
 `;

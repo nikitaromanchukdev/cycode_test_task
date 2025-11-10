@@ -1,4 +1,4 @@
-import { useStore } from '@/app/providers';
+import { useStore } from '@/shared/providers';
 import { Card, CardTitle } from '@/shared/ui';
 import { InfoLabel, InfoValue, UserItem, UserList } from './SubscriptionDetails.styles';
 
@@ -9,7 +9,7 @@ export const SubscriptionDetails: React.FC<SubscriptionDetailsProps> = () => {
 
     return (
         <Card>
-            <CardTitle $color="status.success">✓ Subscribed</CardTitle>
+            <CardTitle>✓ Subscribed</CardTitle>
 
             <InfoLabel>Organization:</InfoLabel>
 
