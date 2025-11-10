@@ -1,6 +1,6 @@
 import { queryOrgs } from '@/entities/organization/api';
 import { queryUsersGroupedByOrg } from '@/entities/user/api';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import {
     CloseButton,
     FormContainer,
@@ -11,9 +11,7 @@ import {
     SubmitButton,
 } from './SubscriptionModal.styles';
 import {
-    DropdownButton,
     DropdownItem,
-    DropdownMenu,
     EmptyState,
     ItemLabel,
     SearchInput,
@@ -21,7 +19,7 @@ import {
     UserEmail,
 } from '@/shared/ui/Dropdown.styles';
 import { Checkbox, RadioButton } from '@/shared/ui/Input.styles';
-import { FormGroup, Label } from '@/shared/ui/Form.styles';
+import { Select } from '@/shared/ui/Select';
 
 const organizations = queryOrgs();
 const usersByOrg = queryUsersGroupedByOrg();
@@ -37,29 +35,11 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = props => {
 
     const [selectedOrgId, setSelectedOrgId] = useState<number | null>(null);
     const [selectedUserIds, setSelectedUserIds] = useState<number[]>([]);
+
     const [orgDropdownOpen, setOrgDropdownOpen] = useState<boolean>(false);
     const [userDropdownOpen, setUserDropdownOpen] = useState<boolean>(false);
+
     const [userSearchQuery, setUserSearchQuery] = useState<string>('');
-
-    const orgDropdownRef = useRef<HTMLDivElement>(null);
-    const userDropdownRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (orgDropdownRef.current && !orgDropdownRef.current.contains(event.target as Node)) {
-                setOrgDropdownOpen(false);
-            }
-            if (
-                userDropdownRef.current &&
-                !userDropdownRef.current.contains(event.target as Node)
-            ) {
-                setUserDropdownOpen(false);
-            }
-        };
-
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => document.removeEventListener('mousedown', handleClickOutside);
-    }, []);
 
     const handleOrgSelect = (orgId: number) => {
         setSelectedOrgId(orgId);
@@ -92,6 +72,12 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = props => {
 
     const isFormValid = selectedOrgId !== null && selectedUserIds.length > 0;
 
+    const selectedUsersQuantity =
+        selectedUserIds.length > 0
+            ? `${selectedUserIds.length} user${selectedUserIds.length > 1 ? 's' : ''} selected`
+            : 'Select users';
+    const usersActionText = selectedOrgId ? selectedUsersQuantity : 'Select an organization first';
+
     return (
         <ModalOverlay $isOpen={isOpen} onClick={onClose}>
             <ModalContent $isOpen={isOpen} onClick={e => e.stopPropagation()}>
@@ -102,87 +88,63 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = props => {
                 </ModalHeader>
 
                 <FormContainer>
-                    <FormGroup ref={orgDropdownRef}>
-                        <Label>Organization</Label>
-
-                        <DropdownButton onClick={() => setOrgDropdownOpen(!orgDropdownOpen)}>
+                    <Select
+                        isOpen={orgDropdownOpen}
+                        setIsOpen={setOrgDropdownOpen}
+                        label="Organization"
+                        actionText={
                             <span>{selectedOrg ? selectedOrg.name : 'Select an organization'}</span>
-                            <span>{orgDropdownOpen ? '▲' : '▼'}</span>
-                        </DropdownButton>
+                        }
+                    >
+                        {organizations.map(org => (
+                            <DropdownItem key={org.id} onClick={() => handleOrgSelect(org.id)}>
+                                <RadioButton type="radio" checked={selectedOrgId === org.id} />
 
-                        {orgDropdownOpen && (
-                            <DropdownMenu>
-                                {organizations.map(org => (
-                                    <DropdownItem
-                                        key={org.id}
-                                        onClick={() => handleOrgSelect(org.id)}
-                                    >
-                                        <RadioButton
-                                            type="radio"
-                                            checked={selectedOrgId === org.id}
-                                            onChange={() => {}}
-                                        />
+                                <ItemLabel>{org.name}</ItemLabel>
+                            </DropdownItem>
+                        ))}
+                    </Select>
 
-                                        <ItemLabel>{org.name}</ItemLabel>
-                                    </DropdownItem>
-                                ))}
-                            </DropdownMenu>
-                        )}
-                    </FormGroup>
-
-                    <FormGroup ref={userDropdownRef}>
-                        <Label>
-                            Users
-                            {selectedUserIds.length > 0 && (
-                                <SelectedCount>({selectedUserIds.length} selected)</SelectedCount>
-                            )}
-                        </Label>
-                        <DropdownButton
-                            onClick={() => setUserDropdownOpen(!userDropdownOpen)}
-                            disabled={!selectedOrgId}
-                        >
-                            <span>
-                                {!selectedOrgId
-                                    ? 'Select an organization first'
-                                    : selectedUserIds.length > 0
-                                      ? `${selectedUserIds.length} user${selectedUserIds.length > 1 ? 's' : ''} selected`
-                                      : 'Select users'}
-                            </span>
-                            <span>{userDropdownOpen ? '▲' : '▼'}</span> {/* TODO: rotate instead */}
-                        </DropdownButton>
-
-                        {userDropdownOpen && selectedOrgId && (
-                            <DropdownMenu>
-                                <SearchInput
-                                    type="text"
-                                    placeholder="Search users..."
-                                    value={userSearchQuery}
-                                    onChange={e => setUserSearchQuery(e.target.value)}
-                                    onClick={e => e.stopPropagation()}
-                                />
-                                {filteredUsers.map(user => (
-                                    <DropdownItem
-                                        key={user.id}
-                                        onClick={() => handleUserToggle(user.id)}
-                                    >
-                                        <Checkbox
-                                            type="checkbox"
-                                            checked={selectedUserIds.includes(user.id)}
-                                            onChange={() => {}}
-                                        />
-
-                                        <ItemLabel>
-                                            {user.name}
-                                            <UserEmail>{user.email}</UserEmail>
-                                        </ItemLabel>
-                                    </DropdownItem>
-                                ))}
-                                {filteredUsers.length === 0 && (
-                                    <EmptyState>No users found</EmptyState>
+                    <Select
+                        isOpen={userDropdownOpen}
+                        setIsOpen={setUserDropdownOpen}
+                        disabled={!selectedOrgId}
+                        label={
+                            <>
+                                Users
+                                {selectedUserIds.length > 0 && (
+                                    <SelectedCount>
+                                        ({selectedUserIds.length} selected)
+                                    </SelectedCount>
                                 )}
-                            </DropdownMenu>
-                        )}
-                    </FormGroup>
+                            </>
+                        }
+                        actionText={usersActionText}
+                    >
+                        <SearchInput
+                            type="text"
+                            placeholder="Search users..."
+                            value={userSearchQuery}
+                            onChange={e => setUserSearchQuery(e.target.value)}
+                            onClick={e => e.stopPropagation()}
+                        />
+
+                        {filteredUsers.map(user => (
+                            <DropdownItem key={user.id} onClick={() => handleUserToggle(user.id)}>
+                                <Checkbox
+                                    type="checkbox"
+                                    checked={selectedUserIds.includes(user.id)}
+                                />
+
+                                <ItemLabel>
+                                    {user.name}
+                                    <UserEmail>{user.email}</UserEmail>
+                                </ItemLabel>
+                            </DropdownItem>
+                        ))}
+
+                        {filteredUsers.length === 0 && <EmptyState>No users found</EmptyState>}
+                    </Select>
 
                     <SubmitButton onClick={handleSubmit} disabled={!isFormValid}>
                         Subscribe Now

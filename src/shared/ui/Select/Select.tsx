@@ -1,0 +1,41 @@
+import { DropdownButton, DropdownMenu } from '@/shared/ui/Dropdown.styles';
+import { FormGroup, Label } from '@/shared/ui/Form.styles';
+import { PropsWithChildren, ReactNode, useEffect, useRef } from 'react';
+
+interface SelectProps {
+    label?: ReactNode;
+    actionText: ReactNode;
+    disabled?: boolean;
+
+    setIsOpen: (value: boolean) => void;
+    isOpen: boolean;
+}
+export const Select: React.FC<PropsWithChildren<SelectProps>> = props => {
+    const { actionText, children, disabled, label, isOpen, setIsOpen } = props;
+
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    return (
+        <FormGroup ref={containerRef}>
+            {label && <Label>{label}</Label>}
+
+            <DropdownButton disabled={disabled} onClick={() => setIsOpen(!isOpen)}>
+                <span>{actionText}</span>
+                <span>{isOpen ? '▲' : '▼'}</span>
+            </DropdownButton>
+
+            {isOpen && <DropdownMenu>{children}</DropdownMenu>}
+        </FormGroup>
+    );
+};
