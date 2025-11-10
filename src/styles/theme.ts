@@ -1,4 +1,4 @@
-import { colorWithAlpha } from '@/utils/color';
+import { colorWithAlpha } from '@/shared/utils/color';
 
 export const theme = {
     /**
