@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const PageContainer = styled.div`
     position: relative;
-    min-height: calc(100vh - 72px); // TODO: replace 72px magic number
+    min-height: calc(100vh - 81px);
 `;
 
 export const PageTitle = styled.h1`
