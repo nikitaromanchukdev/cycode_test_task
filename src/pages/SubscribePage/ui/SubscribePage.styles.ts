@@ -1,7 +1,5 @@
-import { PrimaryButton } from '@/shared/ui/Button.styles';
-import { PageLayout } from '@/shared/ui/PageLayout/PageLayout';
-import { Content } from '@/shared/ui/PageLayout/PageLayout.styles';
 import styled from 'styled-components';
+import { Content, PageLayout, PrimaryButton } from '@/shared/ui';
 
 export const SubscribeSection = styled(Content)`
     flex-grow: 1;

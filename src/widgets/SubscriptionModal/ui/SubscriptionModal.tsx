@@ -1,4 +1,11 @@
 import { useCallback, useState } from 'react';
+import { useStore } from '@/app/providers'; // TODO:
+import { useSelector } from '@/app/providers/store/useSelector'; // TODO:
+import { Organization } from '@/entities/organization/model';
+import { User } from '@/entities/user/model';
+import { getUserKey, getUserOrgId } from '@/entities/user/lib';
+import { OrganizationSelect } from '@/features/organization/ui';
+import { UsersMultiselect } from '@/features/user/ui';
 import {
     CloseButton,
     FormContainer,
@@ -8,14 +15,6 @@ import {
     ModalTitle,
     SubmitButton,
 } from './SubscriptionModal.styles';
-import { OrganizationSelect } from '@/features/organization/ui/OrganizationSelect';
-import { UsersMultiselect } from '@/features/user/ui/UsersMultiselect';
-import { useStore } from '@/app/providers';
-import { Organization } from '@/entities/organization/types';
-import { User } from '@/entities/user/model';
-import { getUserKey, getUserOrgId } from '@/entities/user/lib';
-import { useSelector } from '@/app/providers/store/useSelector';
-
 interface SubscriptionModalProps {
     isOpen: boolean;
     onClose: () => void;

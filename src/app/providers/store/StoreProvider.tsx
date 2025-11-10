@@ -1,10 +1,10 @@
 import { PropsWithChildren, useCallback, useEffect, useRef, useState } from 'react';
+import { Organization } from '@/entities/organization/model';
+import { Subscription } from '@/entities/subscription/model';
+import { User } from '@/entities/user/model';
+import { defaultState } from './config';
 import { StoreContext } from './context';
 import { Middleware, Store, StoreState } from './types';
-import { Subscription } from '@/entities/subscription/model/types';
-import { defaultState } from './config';
-import { User } from '@/entities/user/model';
-import { Organization } from '@/entities/organization/types';
 
 interface StoreProviderProps {
     children: React.ReactNode;

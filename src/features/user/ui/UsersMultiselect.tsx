@@ -1,12 +1,17 @@
 import { ReactNode, useMemo, useState } from 'react';
+import {
+    Checkbox,
+    DropdownItem,
+    EmptyState,
+    ItemLabel,
+    Select,
+    SelectedCount,
+    SearchInput,
+    SearchMatchHighlight,
+} from '@/shared/ui';
 import { User } from '@/entities/user/model';
 import { UserEmail, UserName } from '@/entities/user/ui';
 import { getUserEmail, getUserFullName, getUserKey } from '@/entities/user/lib';
-import { SearchInput } from '@/features/shared/Search/ui/Search.styles';
-import { SearchMatchHighlight } from '@/features/shared/Search/ui/SearchMatchHighlight';
-import { DropdownItem, EmptyState, ItemLabel, SelectedCount } from '@/shared/ui/Dropdown.styles';
-import { Checkbox } from '@/shared/ui/Input.styles';
-import { Select } from '@/shared/ui/Select';
 
 interface UsersMultiselectProps {
     disabled: boolean;

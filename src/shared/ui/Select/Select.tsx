@@ -1,6 +1,5 @@
-import { DropdownButton, DropdownMenu } from '@/shared/ui/Dropdown.styles';
-import { FormGroup, Label } from '@/shared/ui/Form.styles';
 import { PropsWithChildren, ReactNode, useEffect, useRef } from 'react';
+import { DropdownButton, DropdownMenu, FormGroup, Label } from '@/shared/ui';
 
 interface SelectProps {
     label?: ReactNode;

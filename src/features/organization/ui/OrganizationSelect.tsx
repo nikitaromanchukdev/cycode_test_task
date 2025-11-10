@@ -1,9 +1,8 @@
-import { Organization } from '@/entities/organization/types';
-import { getOrgKey } from '@/entities/organization/utils';
-import { DropdownItem, ItemLabel } from '@/shared/ui/Dropdown.styles';
-import { RadioButton } from '@/shared/ui/Input.styles';
-import { Select } from '@/shared/ui/Select';
 import { useCallback, useState } from 'react';
+import { Select } from '@/shared/ui';
+import { Organization } from '@/entities/organization/model';
+import { getOrgKey } from '@/entities/organization/lib';
+import { DropdownItem, ItemLabel, RadioButton } from '@/shared/ui';
 
 interface OrganizationSelectProps {
     data: Organization[];

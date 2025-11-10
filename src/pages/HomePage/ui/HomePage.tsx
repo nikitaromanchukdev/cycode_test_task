@@ -1,9 +1,8 @@
-import { PageLayout } from '@/shared/ui/PageLayout/PageLayout';
-import { WelcomeMessage, WelcomeSection, WelcomeText } from './HomePage.styles';
-import { PrimaryButton } from '@/shared/ui/Button.styles';
 import { useNavigate } from 'react-router-dom';
-import { SubscriptionDetails } from '@/features/subscription/ui/SubscriptionDetails/SubscriptionDetails';
-import { useStore } from '@/app/providers/store/useStore';
+import { useStore } from '@/app/providers/store/useStore'; // TODO:
+import { PageLayout, PrimaryButton } from '@/shared/ui';
+import { SubscriptionDetails } from '@/features/subscription/ui';
+import { WelcomeMessage, WelcomeSection, WelcomeText } from './HomePage.styles';
 
 const WelcomePage: React.FC = () => {
     const navigate = useNavigate();

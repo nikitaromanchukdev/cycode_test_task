@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Content } from '@/shared/ui/PageLayout/PageLayout.styles';
+import { Content } from '@/shared/ui';
 
 export const WelcomeSection = styled(Content)`
     text-align: center;

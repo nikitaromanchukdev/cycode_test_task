@@ -1,22 +1,7 @@
-import { colorWithAlpha } from '@/shared/utils/color';
+import { colorWithAlpha } from '@/shared/lib';
+import { Path } from '@/shared/lib';
 
 export const theme = {
-    /**
-     * @deprecated
-     */
-    legacyColors: {
-        backgroundLight: '#F5F5F5',
-        backgroundDark: '#121212',
-
-        text: '#E5E5E5',
-        textSecondary: '#A1A1A1',
-
-        smokyBlack: '#100C08',
-        darkCharcoal: '#333333',
-        outerSpace: '#2D383A',
-
-        primary: '#E5E5E5',
-    },
     colors: {
         background: {
             primary: '#09090b',
@@ -77,3 +62,5 @@ export const theme = {
 } as const;
 
 export type AppTheme = typeof theme;
+
+export type ThemeColors = Path<AppTheme['colors']>;

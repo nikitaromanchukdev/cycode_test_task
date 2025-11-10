@@ -1,28 +1,5 @@
 import styled from 'styled-components';
 
-export const SubscriptionInfo = styled.div`
-    padding: 2rem;
-    margin: 2rem 0;
-
-    background: ${({ theme }) => theme.colors.background.secondary};
-
-    border: 1px solid ${({ theme }) => theme.colors.border.primary};
-    border-radius: ${({ theme }) => theme.utils.spacing(3)};
-
-    text-align: left;
-`;
-
-export const SubscriptionTitle = styled.h3`
-    margin-bottom: 1rem;
-
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-
-    color: ${({ theme }) => theme.colors.status.success};
-    font-size: 1.5rem;
-`;
-
 export const InfoLabel = styled.div`
     margin-top: 1rem;
     margin-bottom: 0.25rem;

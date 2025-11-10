@@ -1,15 +1,15 @@
 import { Suspense } from 'react';
-import Header from '../widgets/Header/ui/Header';
-import { GlobalStyle } from '../styles/global';
-
-import { Route, Routes } from 'react-router-dom';
-import { appRoutes } from './routes/routes';
 import styled from 'styled-components';
+import { Route, Routes } from 'react-router-dom';
+
+import { LoadingOverlay } from '@/shared/ui';
+import { useCurrentPageTitle } from '@/shared/lib';
+import { GlobalStyle } from '@/styles/global';
+import Header from '../widgets/Header/ui/Header';
 import StoreProvider from './providers/store/StoreProvider';
 import { createLocalStorageMiddleware, loadMiddlewareState } from './providers/store/middleware';
-import { LoadingOverlay } from '@/shared/ui/LoadingOverlay/LoadingOverlay';
-import { useCurrentPageTitle } from '@/shared/utils/hooks/useCurrentPageTitle';
 import { Loader } from './providers/Loader';
+import { appRoutes } from './routes/routes';
 
 const App: React.FC = () => {
     useCurrentPageTitle();
@@ -31,7 +31,6 @@ const App: React.FC = () => {
                 <Loader />
 
                 <Root>
-                    {/* TODO */}
                     <Routes>
                         {appRoutes.map(({ path, element }) => (
                             <Route key={path} path={path} element={element} />

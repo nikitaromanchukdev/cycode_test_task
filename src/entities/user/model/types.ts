@@ -1,4 +1,4 @@
-import { Organization } from '../../organization/types';
+import { Organization } from '../../organization/model/types';
 
 export interface User {
     id: string;

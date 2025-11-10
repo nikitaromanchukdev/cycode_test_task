@@ -1,7 +1,7 @@
 import { memo, use, useEffect } from 'react';
 import { useStore } from './store/useStore';
 import { User } from '@/entities/user/model';
-import { Organization } from '@/entities/organization/types';
+import { Organization } from '@/entities/organization/model';
 
 const fetchData = async () => {
     const res = await fetch('https://jsonkeeper.com/b/XSMF');

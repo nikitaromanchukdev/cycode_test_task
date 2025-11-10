@@ -1,18 +1,19 @@
+import { ThemeColors } from '@/styles/theme';
 import styled from 'styled-components';
 
-export const DropdownButton = styled.button`
+export const DropdownButton = styled.button<{ $color?: ThemeColors; $background?: ThemeColors }>`
     padding: 0.75rem;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    background: ${({ theme }) => theme.colors.background.primary};
+    background: ${({ $background, theme }) => $background || theme.colors.background.primary};
 
     border: 1px solid ${({ theme }) => theme.colors.border.primary};
     border-radius: ${({ theme }) => theme.utils.spacing(2)};
 
-    color: ${({ theme }) => theme.colors.text.primary};
+    color: ${({ $color, theme }) => $color || theme.colors.text.primary};
     font-size: 1rem;
     text-align: left;
 

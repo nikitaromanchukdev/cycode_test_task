@@ -1,5 +1,5 @@
-import { PrimaryButton } from '@/shared/ui/Button.styles';
 import styled, { keyframes } from 'styled-components';
+import { PrimaryButton } from '@/shared/ui';
 
 export const ModalOverlay = styled.div<{ $isOpen: boolean }>`
     position: fixed;

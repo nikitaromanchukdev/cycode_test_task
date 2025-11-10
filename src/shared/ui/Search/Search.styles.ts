@@ -1,4 +1,4 @@
-import { Input } from '@/shared/ui/Input.styles';
+import { Input } from '@/shared/ui';
 import styled from 'styled-components';
 
 export const SearchInput = styled(Input)`

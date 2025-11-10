@@ -1,14 +1,14 @@
-import { SubscribeButton, SubscribePageLayout, SubscribeSection } from './SubscribePage.styles';
 import { useCallback, useState } from 'react';
-import { SubscriptionModal } from '@/widgets/SubscriptionModal/ui/SubscriptionModal';
-import { Subscription } from '@/entities/subscription/model/types';
 import { useNavigate } from 'react-router-dom';
-import { useStore } from '@/app/providers';
-import { Organization } from '@/entities/organization/types';
+import { useStore } from '@/app/providers'; // TODO
+import { useSelector } from '@/app/providers/store/useSelector'; // TODO
+import { Subscription } from '@/entities/subscription/model';
+import { Organization } from '@/entities/organization/model';
 import { User } from '@/entities/user/model';
-import { useSelector } from '@/app/providers/store/useSelector';
 import { getUserFullName, getUserKey, getUserOrgId } from '@/entities/user/lib';
-import { getOrgKey } from '@/entities/organization/utils';
+import { getOrgKey } from '@/entities/organization/lib';
+import { SubscriptionModal } from '@/widgets/SubscriptionModal/ui/SubscriptionModal';
+import { SubscribeButton, SubscribePageLayout, SubscribeSection } from './SubscribePage.styles';
 
 const SubscribePage: React.FC = () => {
     const navigate = useNavigate();
