@@ -38,8 +38,6 @@ const _VirtualizedList = <T extends object>(props: VirtualizedListProps<T>) => {
 
     const shiftList = useCallback(
         (trigger: 'top' | 'bottom') => {
-            console.log({ trigger });
-
             setStartIndex(previous => {
                 if (data.length <= renderCount) {
                     return 0;
@@ -58,8 +56,6 @@ const _VirtualizedList = <T extends object>(props: VirtualizedListProps<T>) => {
 
     const visibleItems = data.slice(safeStart, safeEnd + 1);
     const topOffset = startIndex * itemHeight;
-
-    console.log({ startIndex, safeStart, safeEnd, length: data.length });
 
     useEffect(() => {
         const options: IntersectionObserverInit = { root: containerRef.current, threshold: 0.1 };
