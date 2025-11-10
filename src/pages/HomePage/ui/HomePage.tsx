@@ -8,7 +8,9 @@ import { useStore } from '@/app/providers/store/useStore';
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
 
-    const { companyName, subscription } = useStore();
+    const { companyName, subscription, users, organizations } = useStore();
+
+    console.log({ users, organizations });
 
     return (
         <PageLayout title="Welcome Home">

@@ -3,6 +3,8 @@ import { StoreContext } from './context';
 import { Middleware, Store, StoreState } from './types';
 import { Subscription } from '@/entities/subscription/types';
 import { defaultState } from './config';
+import { User } from '@/entities/user/types';
+import { Organization } from '@/entities/organization/types';
 
 interface StoreProviderProps {
     children: React.ReactNode;
@@ -34,8 +36,18 @@ const StoreProvider: React.FC<PropsWithChildren<StoreProviderProps>> = props => 
         setState(prev => ({ ...prev, subscription: null }));
     }, []);
 
+    const setUsers = useCallback((users: User[]) => {
+        setState(prev => ({ ...prev, users }));
+    }, []);
+
+    const setOrganizations = useCallback((organizations: Organization[]) => {
+        setState(prev => ({ ...prev, organizations }));
+    }, []);
+
     const store: Store = {
         ...state,
+        setUsers,
+        setOrganizations,
         setSubscription,
         clearSubscription,
     };
