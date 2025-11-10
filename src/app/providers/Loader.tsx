@@ -1,5 +1,5 @@
 import { memo, use, useEffect } from 'react';
-import { useStore } from './store/useStore';
+import { useStore } from '@/shared/providers';
 import { User } from '@/entities/user/model';
 import { Organization } from '@/entities/organization/model';
 

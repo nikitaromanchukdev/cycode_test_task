@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useStore } from '@/app/providers/store/useStore'; // TODO:
+import { useStore } from '@/shared/providers';
 import { PageLayout, PrimaryButton } from '@/shared/ui';
 import { SubscriptionDetails } from '@/features/subscription/ui';
 import { WelcomeMessage, WelcomeSection, WelcomeText } from './HomePage.styles';

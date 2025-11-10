@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useStore } from '@/app/providers'; // TODO
-import { useSelector } from '@/app/providers/store/useSelector'; // TODO
+import { useStore, useSelector } from '@/shared/providers';
 import { Subscription } from '@/entities/subscription/model';
 import { Organization } from '@/entities/organization/model';
 import { User } from '@/entities/user/model';

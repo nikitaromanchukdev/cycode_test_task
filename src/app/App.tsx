@@ -5,11 +5,14 @@ import { Route, Routes } from 'react-router-dom';
 import { LoadingOverlay } from '@/shared/ui';
 import { useCurrentPageTitle } from '@/shared/lib';
 import { GlobalStyle } from '@/styles/global';
-import Header from '../widgets/Header/ui/Header';
-import StoreProvider from './providers/store/StoreProvider';
-import { createLocalStorageMiddleware, loadMiddlewareState } from './providers/store/middleware';
+import Header from '@/widgets/Header/ui/Header';
+import {
+    appRoutes,
+    StoreProvider,
+    createLocalStorageMiddleware,
+    loadMiddlewareState,
+} from '@/shared/providers';
 import { Loader } from './providers/Loader';
-import { appRoutes } from '@/shared/providers';
 
 const App: React.FC = () => {
     useCurrentPageTitle();

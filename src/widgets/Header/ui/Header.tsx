@@ -1,6 +1,5 @@
 import logoMono from '@/assets/logo-mono.png';
-import { useStore } from '@/app/providers'; // TODO
-import { appRoutes } from '@/shared/providers';
+import { appRoutes, useStore } from '@/shared/providers';
 import { CompanyName, Logo, LogoImage, NavBar, NavLink, NavLinks } from './Header.styles';
 
 const Header: React.FC = () => {

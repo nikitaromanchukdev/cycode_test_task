@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react';
-import { useStore } from '@/app/providers'; // TODO:
-import { useSelector } from '@/app/providers/store/useSelector'; // TODO:
+import { useStore, useSelector } from '@/shared/providers';
 import { Organization } from '@/entities/organization/model';
 import { User } from '@/entities/user/model';
 import { getUserKey, getUserOrgId } from '@/entities/user/lib';
@@ -15,6 +14,7 @@ import {
     ModalTitle,
     SubmitButton,
 } from './SubscriptionModal.styles';
+
 interface SubscriptionModalProps {
     isOpen: boolean;
     onClose: () => void;
