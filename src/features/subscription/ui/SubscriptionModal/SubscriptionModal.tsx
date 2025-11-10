@@ -10,16 +10,8 @@ import {
     ModalTitle,
     SubmitButton,
 } from './SubscriptionModal.styles';
-import {
-    DropdownItem,
-    EmptyState,
-    ItemLabel,
-    SearchInput,
-    SelectedCount,
-    UserEmail,
-} from '@/shared/ui/Dropdown.styles';
-import { Checkbox, RadioButton } from '@/shared/ui/Input.styles';
-import { Select } from '@/shared/ui/Select';
+import { OrganizationSelect } from '@/features/organization/ui/OrganizationSelect';
+import { UsersMultiselect } from '@/features/user/ui/UsersMultiselect';
 
 const organizations = queryOrgs();
 const usersByOrg = queryUsersGroupedByOrg();
@@ -36,15 +28,11 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = props => {
     const [selectedOrgId, setSelectedOrgId] = useState<number | null>(null);
     const [selectedUserIds, setSelectedUserIds] = useState<number[]>([]);
 
-    const [orgDropdownOpen, setOrgDropdownOpen] = useState<boolean>(false);
-    const [userDropdownOpen, setUserDropdownOpen] = useState<boolean>(false);
-
     const [userSearchQuery, setUserSearchQuery] = useState<string>('');
 
-    const handleOrgSelect = (orgId: number) => {
+    const onOrgSelect = (orgId: number) => {
         setSelectedOrgId(orgId);
         setSelectedUserIds([]);
-        setOrgDropdownOpen(false);
     };
 
     const handleUserToggle = (userId: number) => {
@@ -62,21 +50,9 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = props => {
         }
     };
 
-    const selectedOrg = selectedOrgId ? organizations.find(o => o.id === selectedOrgId) : null;
-    const availableUsers = selectedOrgId ? usersByOrg[selectedOrgId] : [];
-    const filteredUsers = availableUsers!.filter(
-        user =>
-            user.name.toLowerCase().includes(userSearchQuery.toLowerCase()) ||
-            user.email.toLowerCase().includes(userSearchQuery.toLowerCase())
-    );
+    const availableUsers = selectedOrgId ? usersByOrg[selectedOrgId]! : [];
 
     const isFormValid = selectedOrgId !== null && selectedUserIds.length > 0;
-
-    const selectedUsersQuantity =
-        selectedUserIds.length > 0
-            ? `${selectedUserIds.length} user${selectedUserIds.length > 1 ? 's' : ''} selected`
-            : 'Select users';
-    const usersActionText = selectedOrgId ? selectedUsersQuantity : 'Select an organization first';
 
     return (
         <ModalOverlay $isOpen={isOpen} onClick={onClose}>
@@ -88,63 +64,21 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = props => {
                 </ModalHeader>
 
                 <FormContainer>
-                    <Select
-                        isOpen={orgDropdownOpen}
-                        setIsOpen={setOrgDropdownOpen}
-                        label="Organization"
-                        actionText={
-                            <span>{selectedOrg ? selectedOrg.name : 'Select an organization'}</span>
-                        }
-                    >
-                        {organizations.map(org => (
-                            <DropdownItem key={org.id} onClick={() => handleOrgSelect(org.id)}>
-                                <RadioButton type="radio" checked={selectedOrgId === org.id} />
+                    <OrganizationSelect
+                        value={selectedOrgId}
+                        data={organizations}
+                        onSelect={onOrgSelect}
+                    />
 
-                                <ItemLabel>{org.name}</ItemLabel>
-                            </DropdownItem>
-                        ))}
-                    </Select>
-
-                    <Select
-                        isOpen={userDropdownOpen}
-                        setIsOpen={setUserDropdownOpen}
+                    <UsersMultiselect
+                        customActionText={!selectedOrgId && 'Select an organization first'}
+                        data={availableUsers}
                         disabled={!selectedOrgId}
-                        label={
-                            <>
-                                Users
-                                {selectedUserIds.length > 0 && (
-                                    <SelectedCount>
-                                        ({selectedUserIds.length} selected)
-                                    </SelectedCount>
-                                )}
-                            </>
-                        }
-                        actionText={usersActionText}
-                    >
-                        <SearchInput
-                            type="text"
-                            placeholder="Search users..."
-                            value={userSearchQuery}
-                            onChange={e => setUserSearchQuery(e.target.value)}
-                            onClick={e => e.stopPropagation()}
-                        />
-
-                        {filteredUsers.map(user => (
-                            <DropdownItem key={user.id} onClick={() => handleUserToggle(user.id)}>
-                                <Checkbox
-                                    type="checkbox"
-                                    checked={selectedUserIds.includes(user.id)}
-                                />
-
-                                <ItemLabel>
-                                    {user.name}
-                                    <UserEmail>{user.email}</UserEmail>
-                                </ItemLabel>
-                            </DropdownItem>
-                        ))}
-
-                        {filteredUsers.length === 0 && <EmptyState>No users found</EmptyState>}
-                    </Select>
+                        value={selectedUserIds}
+                        onSelect={user => handleUserToggle(user.id)}
+                        searchQuery={userSearchQuery}
+                        setSearchQuery={setUserSearchQuery}
+                    />
 
                     <SubmitButton onClick={handleSubmit} disabled={!isFormValid}>
                         Subscribe Now

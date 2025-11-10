@@ -56,16 +56,6 @@ export const DropdownMenu = styled.div`
     box-shadow: 0 4px 12px ${({ theme }) => theme.colors.shadow.dark};
 `;
 
-export const SearchInput = styled(Input)`
-    width: 100%;
-
-    border: none;
-    border-radius: 0%;
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border.primary};
-
-    font-size: 0.9rem; // TODO: implement sizes
-`;
-
 export const DropdownItem = styled.div`
     padding: 0.75rem;
 
@@ -109,6 +99,14 @@ export const EmptyState = styled.div`
 
     color: ${({ theme }) => theme.colors.text.secondary};
     text-align: center;
+`;
+
+export const UserName = styled.div`
+    margin-bottom: 0.1em;
+
+    font-size: 0.95rem;
+
+    color: ${({ theme }) => theme.colors.text.primary};
 `;
 
 export const UserEmail = styled.div`
