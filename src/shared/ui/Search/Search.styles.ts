@@ -2,7 +2,7 @@ import { Input } from '@/shared/ui';
 import styled from 'styled-components';
 
 export const SearchInput = styled(Input)`
-    width: 100%;
+    height: 42px;
 
     border: none;
     border-radius: 0%;

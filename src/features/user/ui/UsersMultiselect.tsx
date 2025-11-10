@@ -6,12 +6,18 @@ import {
     ItemLabel,
     Select,
     SelectedCount,
-    SearchInput,
     SearchMatchHighlight,
 } from '@/shared/ui';
 import { User } from '@/entities/user/model';
 import { UserEmail, UserName } from '@/entities/user/ui';
 import { getUserEmail, getUserFullName, getUserKey } from '@/entities/user/lib';
+import { VirtualizedList } from '@/shared/ui/VirtualizedList/VirtualizedList';
+import { useDebounceValue } from '@/shared/lib/hooks/useDebounceValue';
+import { UserSearch } from './UserMultiselect.styles';
+
+const LIST_ITEM_HEIGHT = 60;
+const SEARCH_BAR_HEIGHT = 42;
+const DROPDOWN_MAX_HEIGHT = 250;
 
 interface UsersMultiselectProps {
     disabled: boolean;
@@ -36,13 +42,15 @@ export const UsersMultiselect: React.FC<UsersMultiselectProps> = props => {
             ? `${value.length} user${value.length > 1 ? 's' : ''} selected`
             : 'Select users';
 
+    const debouncedSearchQuery = useDebounceValue(searchQuery);
+
     const filteredData = useMemo(() => {
         return data.filter(
             user =>
-                getUserFullName(user).toLowerCase().includes(searchQuery.toLowerCase()) ||
-                getUserEmail(user).toLowerCase().includes(searchQuery.toLowerCase())
+                getUserFullName(user).toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+                getUserEmail(user).toLowerCase().includes(debouncedSearchQuery.toLowerCase())
         );
-    }, [data, searchQuery]);
+    }, [data, debouncedSearchQuery]);
 
     return (
         <Select
@@ -57,7 +65,8 @@ export const UsersMultiselect: React.FC<UsersMultiselectProps> = props => {
             }
             actionText={customActionText || selectedUsersQuantity}
         >
-            <SearchInput
+            <UserSearch
+                name="user-search"
                 type="text"
                 placeholder="Search users..."
                 value={searchQuery}
@@ -65,29 +74,37 @@ export const UsersMultiselect: React.FC<UsersMultiselectProps> = props => {
                 onClick={e => e.stopPropagation()}
             />
 
-            {filteredData.map(user => (
-                <DropdownItem key={getUserKey(user)} onClick={() => onSelect(user)}>
-                    <Checkbox
-                        type="checkbox"
-                        checked={value.includes(getUserKey(user))}
-                        onChange={() => {}}
-                    />
+            <VirtualizedList
+                itemHeight={LIST_ITEM_HEIGHT}
+                data={filteredData}
+                containerHeight={Math.min(
+                    filteredData.length * LIST_ITEM_HEIGHT,
+                    DROPDOWN_MAX_HEIGHT - SEARCH_BAR_HEIGHT
+                )}
+                renderItem={user => (
+                    <DropdownItem key={getUserKey(user)} onClick={() => onSelect(user)}>
+                        <Checkbox
+                            type="checkbox"
+                            checked={value.includes(getUserKey(user))}
+                            onChange={() => {}}
+                        />
 
-                    <ItemLabel>
-                        <UserName>
-                            <SearchMatchHighlight searched={searchQuery}>
-                                {getUserFullName(user)}
-                            </SearchMatchHighlight>
-                        </UserName>
+                        <ItemLabel>
+                            <UserName>
+                                <SearchMatchHighlight searched={searchQuery}>
+                                    {getUserFullName(user)}
+                                </SearchMatchHighlight>
+                            </UserName>
 
-                        <UserEmail>
-                            <SearchMatchHighlight searched={searchQuery}>
-                                {getUserEmail(user)}
-                            </SearchMatchHighlight>
-                        </UserEmail>
-                    </ItemLabel>
-                </DropdownItem>
-            ))}
+                            <UserEmail>
+                                <SearchMatchHighlight searched={searchQuery}>
+                                    {getUserEmail(user)}
+                                </SearchMatchHighlight>
+                            </UserEmail>
+                        </ItemLabel>
+                    </DropdownItem>
+                )}
+            />
 
             {filteredData.length === 0 && <EmptyState>No users found</EmptyState>}
         </Select>

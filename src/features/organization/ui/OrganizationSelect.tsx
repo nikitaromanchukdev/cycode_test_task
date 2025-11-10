@@ -34,7 +34,11 @@ export const OrganizationSelect: React.FC<OrganizationSelectProps> = props => {
         >
             {data.map(org => (
                 <DropdownItem key={getOrgKey(org)} onClick={() => _onSelect(getOrgKey(org))}>
-                    <RadioButton type="radio" checked={value === getOrgKey(org)} />
+                    <RadioButton
+                        type="radio"
+                        checked={value === getOrgKey(org)}
+                        onChange={() => {}}
+                    />
 
                     <ItemLabel>{org.name}</ItemLabel>
                 </DropdownItem>

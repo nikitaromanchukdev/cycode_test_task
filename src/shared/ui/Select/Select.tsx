@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode, useEffect, useRef } from 'react';
+import { PropsWithChildren, ReactNode, useEffect, useId, useRef } from 'react';
 import { DropdownButton, DropdownMenu, FormGroup, Label } from '@/shared/ui';
 
 interface SelectProps {
@@ -8,9 +8,13 @@ interface SelectProps {
 
     setIsOpen: (value: boolean) => void;
     isOpen: boolean;
+
+    name?: string;
 }
 export const Select: React.FC<PropsWithChildren<SelectProps>> = props => {
-    const { actionText, children, disabled, label, isOpen, setIsOpen } = props;
+    const { actionText, children, disabled, label, isOpen, setIsOpen, name } = props;
+
+    const id = useId();
 
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -27,9 +31,9 @@ export const Select: React.FC<PropsWithChildren<SelectProps>> = props => {
 
     return (
         <FormGroup ref={containerRef}>
-            {label && <Label>{label}</Label>}
+            {label && <Label htmlFor={name ?? id}>{label}</Label>}
 
-            <DropdownButton disabled={disabled} onClick={() => setIsOpen(!isOpen)}>
+            <DropdownButton id={name ?? id} disabled={disabled} onClick={() => setIsOpen(!isOpen)}>
                 <span>{actionText}</span>
                 <span>{isOpen ? '▲' : '▼'}</span>
             </DropdownButton>

@@ -44,7 +44,7 @@ export const DropdownMenu = styled.div`
     z-index: 2;
     overflow-y: auto;
 
-    max-height: 250px; // ? make configurable
+    max-height: 250px; // TODO: make configurable
 
     margin-top: 0.5rem;
     background: ${({ theme }) => theme.colors.background.secondary};
