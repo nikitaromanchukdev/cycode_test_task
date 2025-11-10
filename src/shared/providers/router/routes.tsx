@@ -1,17 +1,8 @@
 import { lazy } from 'react';
+import { AppRoute } from './types';
 
 const WelcomePage = lazy(() => import('@/pages/HomePage/ui/HomePage'));
 const SubscriptionsPage = lazy(() => import('@/pages/SubscribePage/ui/SubscribePage'));
-
-export interface AppRoute {
-    name: string;
-    path: string;
-    element: React.ReactNode;
-
-    title: string;
-
-    showInNav?: boolean;
-}
 
 export const appRoutes: AppRoute[] = [
     {

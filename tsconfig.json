@@ -1,16 +1,14 @@
 {
     "compilerOptions": {
-        /* === Language and module options === */
         "target": "esnext",
         "lib": ["DOM", "DOM.Iterable", "ES2023", "ES2024"],
         "module": "ESNext",
         "moduleResolution": "bundler",
-        "jsx": "react-jsx", // Modern JSX transform
-        "allowJs": false, // Only compile TS/TSX
+        "jsx": "react-jsx",
+        "allowJs": false,
         "resolveJsonModule": true,
-        "isolatedModules": true, // Needed for Vite/HMR
+        "isolatedModules": true,
 
-        /* === Type checking and strictness === */
         "strict": true,
         "noImplicitAny": true,
         "strictNullChecks": true,
@@ -18,17 +16,14 @@
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
         "forceConsistentCasingInFileNames": true,
-        "skipLibCheck": true, // Speeds up builds
+        "skipLibCheck": true,
 
-        /* === Imports and aliases === */
         "paths": {
             "@/*": ["./src/*"]
         },
 
-        /* === Emission === */
-        "noEmit": true, // Let Vite handle building
+        "noEmit": true,
 
-        /* === Misc === */
         "esModuleInterop": true,
         "allowSyntheticDefaultImports": true,
 

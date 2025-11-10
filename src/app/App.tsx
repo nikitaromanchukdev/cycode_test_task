@@ -9,7 +9,7 @@ import Header from '../widgets/Header/ui/Header';
 import StoreProvider from './providers/store/StoreProvider';
 import { createLocalStorageMiddleware, loadMiddlewareState } from './providers/store/middleware';
 import { Loader } from './providers/Loader';
-import { appRoutes } from './routes/routes';
+import { appRoutes } from '@/shared/providers';
 
 const App: React.FC = () => {
     useCurrentPageTitle();
