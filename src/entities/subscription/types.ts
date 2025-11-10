@@ -1,6 +1,10 @@
+import { Organization } from '../organization/types';
+import { User } from '../user/types';
+
 export interface Subscription {
-    organizationId: number;
+    organizationId: Organization['id'];
     organizationName: string;
-    userIds: number[];
+
+    userIds: Array<User['id']>;
     userNames: string[];
 }

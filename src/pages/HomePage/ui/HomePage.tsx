@@ -15,7 +15,7 @@ const HomePage: React.FC = () => {
             <WelcomeSection>
                 {subscription && (
                     <>
-                        <SubscriptionDetails subscription={subscription} />
+                        <SubscriptionDetails />
 
                         <WelcomeText>
                             You're all set! You'll receive updates for the selected organization and

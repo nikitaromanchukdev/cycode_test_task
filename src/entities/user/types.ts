@@ -1,7 +1,12 @@
+import { Organization } from '../organization/types';
+
 export interface User {
-    id: number;
-    name: string;
+    id: string;
+
+    firstName: string;
+    lastName: string;
+
     email: string;
 
-    orgId: number;
+    organizationId: Organization['id'];
 }

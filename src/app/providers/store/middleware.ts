@@ -34,7 +34,7 @@ export const createLocalStorageMiddleware = (config: PersistConfig): Middleware 
         return {};
     };
 
-    const middleware: Middleware = (state, prevState) => {
+    const middleware: Middleware = state => {
         try {
             const dataToPersist: Map<StoreStateKey, Partial<StoreState>[StoreStateKey]> = new Map();
 

@@ -1,3 +1,4 @@
+import { useStore } from '@/app/providers';
 import {
     InfoLabel,
     InfoValue,
@@ -6,13 +7,12 @@ import {
     UserItem,
     UserList,
 } from './SubscriptionDetails.styles';
-import type { Subscription } from '@/entities/subscription/types';
 
-interface SubscriptionDetailsProps {
-    subscription: Subscription;
-}
+interface SubscriptionDetailsProps {}
 
-export const SubscriptionDetails: React.FC<SubscriptionDetailsProps> = ({ subscription }) => {
+export const SubscriptionDetails: React.FC<SubscriptionDetailsProps> = () => {
+    const { subscription } = useStore();
+
     return (
         <>
             <SubscriptionInfo>
@@ -20,12 +20,12 @@ export const SubscriptionDetails: React.FC<SubscriptionDetailsProps> = ({ subscr
 
                 <InfoLabel>Organization:</InfoLabel>
 
-                <InfoValue>{subscription.organizationName}</InfoValue>
+                <InfoValue>{subscription!.organizationName}</InfoValue>
 
                 <InfoLabel>Selected Users:</InfoLabel>
 
                 <UserList>
-                    {subscription.userNames.map((name, idx) => (
+                    {subscription!.userNames.map((name, idx) => (
                         <UserItem key={idx}>• {name}</UserItem>
                     ))}
                 </UserList>

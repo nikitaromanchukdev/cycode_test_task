@@ -9,6 +9,7 @@ import StoreProvider from './providers/store/StoreProvider';
 import { createLocalStorageMiddleware, loadMiddlewareState } from './providers/store/middleware';
 import { LoadingOverlay } from '@/shared/ui/LoadingOverlay/LoadingOverlay';
 import { useCurrentPageTitle } from '@/shared/utils/hooks/useCurrentPageTitle';
+import { Loader } from './providers/Loader';
 
 const App: React.FC = () => {
     useCurrentPageTitle();
@@ -27,6 +28,7 @@ const App: React.FC = () => {
             <Suspense fallback={<LoadingOverlay fullscreen />}>
                 <GlobalStyle />
                 <Header />
+                <Loader />
 
                 <Root>
                     {/* TODO */}

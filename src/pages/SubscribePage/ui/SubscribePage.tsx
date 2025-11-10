@@ -1,30 +1,34 @@
 import { SubscribeButton, SubscribePageLayout, SubscribeSection } from './SubscribePage.styles';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { SubscriptionModal } from '@/features/subscription/ui/SubscriptionModal/SubscriptionModal';
 import { Subscription } from '@/entities/subscription/types';
-import { queryUsersGroupedByOrg } from '@/entities/user/api'; // TODO
-import { queryOrgs } from '@/entities/organization/api'; // TODO
 import { useNavigate } from 'react-router-dom';
-import { useStore } from '@/app/providers/store/useStore';
-
-const organizations = queryOrgs(); // TODO
-const usersByOrg = queryUsersGroupedByOrg(); // TODO
+import { useStore } from '@/app/providers';
+import { Organization } from '@/entities/organization/types';
+import { User } from '@/entities/user/types';
+import { useSelector } from '@/app/providers/store/useSelector';
+import { getUserFullName, getUserKey, getUserOrgId } from '@/entities/user/utils';
+import { getOrgKey } from '@/entities/organization/utils';
 
 const SubscribePage: React.FC = () => {
     const navigate = useNavigate();
-    const { setSubscription } = useStore();
+    const { organizations, setSubscription } = useStore();
+
+    const usersByOrg = useSelector(
+        useCallback(store => Object.groupBy(store.users, getUserOrgId), [])
+    );
 
     const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-    const handleSubmit = (orgId: number, userIds: number[]) => {
-        const org = organizations.find(o => o.id === orgId);
-        const users = usersByOrg[orgId]!.filter(u => userIds.includes(u.id));
+    const handleSubmit = (orgId: Organization['id'], userIds: Array<User['id']>) => {
+        const org = organizations.find(org => getOrgKey(org) === orgId);
+        const users = usersByOrg[orgId]!.filter(user => userIds.includes(getUserKey(user)));
 
         const newSubscription: Subscription = {
             organizationId: orgId,
             organizationName: org?.name || '',
             userIds: userIds,
-            userNames: users.map(u => u.name),
+            userNames: users.map(getUserFullName),
         };
 
         setSubscription(newSubscription);

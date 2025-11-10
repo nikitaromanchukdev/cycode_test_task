@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Input } from './Input.styles';
 
 export const DropdownButton = styled.button`
     padding: 0.75rem;

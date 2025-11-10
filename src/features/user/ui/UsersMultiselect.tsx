@@ -1,4 +1,5 @@
 import { User } from '@/entities/user/types';
+import { getUserEmail, getUserFullName, getUserKey } from '@/entities/user/utils';
 import { SearchInput } from '@/features/shared/Search/ui/Search.styles';
 import { SearchMatchHighlight } from '@/features/shared/Search/ui/SearchMatchHighlight';
 import {
@@ -39,8 +40,8 @@ export const UsersMultiselect: React.FC<UsersMultiselectProps> = props => {
     const filteredData = useMemo(() => {
         return data.filter(
             user =>
-                user.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                user.email.toLowerCase().includes(searchQuery.toLowerCase())
+                getUserFullName(user).toLowerCase().includes(searchQuery.toLowerCase()) ||
+                getUserEmail(user).toLowerCase().includes(searchQuery.toLowerCase())
         );
     }, [data, searchQuery]);
 
@@ -66,19 +67,23 @@ export const UsersMultiselect: React.FC<UsersMultiselectProps> = props => {
             />
 
             {filteredData.map(user => (
-                <DropdownItem key={user.id} onClick={() => onSelect(user)}>
-                    <Checkbox type="checkbox" checked={value.includes(user.id)} />
+                <DropdownItem key={getUserKey(user)} onClick={() => onSelect(user)}>
+                    <Checkbox
+                        type="checkbox"
+                        checked={value.includes(getUserKey(user))}
+                        onChange={() => {}}
+                    />
 
                     <ItemLabel>
                         <UserName>
                             <SearchMatchHighlight searched={searchQuery}>
-                                {user.name}
+                                {getUserFullName(user)}
                             </SearchMatchHighlight>
                         </UserName>
 
                         <UserEmail>
                             <SearchMatchHighlight searched={searchQuery}>
-                                {user.email}
+                                {getUserEmail(user)}
                             </SearchMatchHighlight>
                         </UserEmail>
                     </ItemLabel>
