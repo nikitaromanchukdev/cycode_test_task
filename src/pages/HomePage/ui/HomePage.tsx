@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { SubscriptionDetails } from '@/features/subscription/ui/SubscriptionDetails/SubscriptionDetails';
 import { useStore } from '@/app/providers/store/useStore';
 
-const HomePage: React.FC = () => {
+const WelcomePage: React.FC = () => {
     const navigate = useNavigate();
 
     const { companyName, subscription } = useStore();
@@ -44,4 +44,4 @@ const HomePage: React.FC = () => {
     );
 };
 
-export default HomePage;
+export default WelcomePage;

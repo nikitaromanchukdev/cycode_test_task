@@ -1,6 +1,6 @@
 import { memo, use, useEffect } from 'react';
 import { useStore } from './store/useStore';
-import { User } from '@/entities/user/types';
+import { User } from '@/entities/user/model';
 import { Organization } from '@/entities/organization/types';
 
 const fetchData = async () => {

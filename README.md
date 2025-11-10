@@ -13,6 +13,8 @@
 - Naive data loading approach for the sake of simplicity
 - Simplified store functionality
 - Mostly missing error handling
+- No complete full-scale component library
+    - e.g. things like typography with `size` options and etc
 
 ## How to run
 

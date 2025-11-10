@@ -1,4 +1,4 @@
-import { User } from './types';
+import { User } from '../model/types';
 
 export const getUserKey = (user: User) => user.id;
 

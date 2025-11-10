@@ -12,8 +12,8 @@ import { OrganizationSelect } from '@/features/organization/ui/OrganizationSelec
 import { UsersMultiselect } from '@/features/user/ui/UsersMultiselect';
 import { useStore } from '@/app/providers';
 import { Organization } from '@/entities/organization/types';
-import { User } from '@/entities/user/types';
-import { getUserKey, getUserOrgId } from '@/entities/user/utils';
+import { User } from '@/entities/user/model';
+import { getUserKey, getUserOrgId } from '@/entities/user/lib';
 import { useSelector } from '@/app/providers/store/useSelector';
 
 interface SubscriptionModalProps {

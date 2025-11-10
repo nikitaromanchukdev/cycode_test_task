@@ -1,6 +1,6 @@
 import { Organization } from '@/entities/organization/types';
-import { Subscription } from '@/entities/subscription/types';
-import { User } from '@/entities/user/types';
+import { Subscription } from '@/entities/subscription/model/types';
+import { User } from '@/entities/user/model';
 
 export interface StoreState {
     companyName: string;

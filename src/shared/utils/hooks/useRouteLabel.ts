@@ -9,5 +9,5 @@ export const useRouteLabel = () => {
 
     const current = appRoutes.find(r => r.path === location.pathname);
 
-    return current?.name;
+    return current?.title;
 };
