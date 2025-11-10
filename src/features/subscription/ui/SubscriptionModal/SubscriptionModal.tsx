@@ -55,11 +55,6 @@ export const SubscriptionModal: React.FC<SubscriptionModalProps> = props => {
         }
     };
 
-    console.log({
-        selectedOrgId,
-        usersByOrg,
-    });
-
     const availableUsers = selectedOrgId ? usersByOrg[selectedOrgId]! : [];
 
     const isFormValid = selectedOrgId !== null && selectedUserIds.length > 0;
