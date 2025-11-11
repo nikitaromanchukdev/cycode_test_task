@@ -2,15 +2,14 @@ import { memo, use, useEffect } from 'react';
 import { useStore } from '@/shared/providers';
 import { User } from '@/entities/user/model';
 import { Organization } from '@/entities/organization/model';
+import { sleep } from '@/shared/lib';
 
 const fetchData = async () => {
     const res = await fetch('https://jsonkeeper.com/b/XSMF');
 
     if (!res.ok) throw new Error('Failed to fetch');
 
-    await new Promise(resolve => {
-        setTimeout(resolve, 1000);
-    });
+    await sleep(1000); // tiny delay to prevent the loading overlay from flickering
 
     return res.json() as Promise<{ users: User[]; organizations: Organization[] }>;
 };
