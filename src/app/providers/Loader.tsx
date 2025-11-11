@@ -9,7 +9,7 @@ const fetchData = async () => {
 
     if (!res.ok) throw new Error('Failed to fetch');
 
-    await sleep(1000); // tiny delay to prevent the loading overlay from flickering
+    await sleep(1000); // tiny delay to prevent the loading overlay from flickering, just for demo purpose
 
     return res.json() as Promise<{ users: User[]; organizations: Organization[] }>;
 };
