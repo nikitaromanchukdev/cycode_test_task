@@ -1,7 +1,7 @@
 import { StoreState } from './types';
 
 export const defaultState: StoreState = {
-    companyName: 'Notascam LTD',
+    companyName: 'JSON & Sons',
     subscription: null,
 
     organizations: [],
