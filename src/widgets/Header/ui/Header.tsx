@@ -1,8 +1,10 @@
 import logoMono from '@/assets/logo-mono.png';
 import { appRoutes, useStore } from '@/shared/providers';
 import { CompanyName, Logo, LogoImage, NavBar, NavLink, NavLinks } from './Header.styles';
+import { useCurrentPageTitle } from '@/shared/lib';
 
 const Header: React.FC = () => {
+    useCurrentPageTitle();
     const { companyName } = useStore();
 
     return (

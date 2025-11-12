@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
 
 import { LoadingOverlay } from '@/shared/ui';
-import { useCurrentPageTitle } from '@/shared/lib';
 import { GlobalStyle } from '@/styles/global';
 import Header from '@/widgets/Header/ui/Header';
 import {
@@ -15,8 +14,6 @@ import {
 import { Loader } from './providers/Loader';
 
 const App: React.FC = () => {
-    useCurrentPageTitle();
-
     const localStorageMiddleware = createLocalStorageMiddleware({
         key: 'store',
         fields: ['subscription'],
